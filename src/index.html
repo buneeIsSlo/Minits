@@ -8,8 +8,38 @@
     <title>Minits</title>
 </head>
 
-<body>
-    <h1 class="hi">Hi! I'm bunee</h1>
+<body class="minits">
+    <div class="minits__container">
+        <header class="minits__header">
+            <h1 class="minits__logo">Minits</h1>
+            <button class="minits__settings"></button>
+        </header>
+        <main id="main" class="minits__timer-container">
+            <nav class="minits__nav">
+                <ul class="minits__list">
+                    <li class="minits__item">
+                        <button class="minits__pomodoro" id="pomodoro">Pomodoro</button>
+                    </li>
+                    <li class="minits__item">
+                        <button class="minits__short-break" id="short-break">Short Break</button>
+                    </li>
+                    <li class="minits__item">
+                        <button class="minits__long-break" id="long-break">Long Break</button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="minits__timer-outter">
+                <div class="minits__timer-inner">
+                    <h2 class="minits__time">00:00</h2>
+                </div>
+            </div>
+            <div class="minits__controls">
+                <button class="minits__ambience" type="button" value="ambience"></button>
+                <button class="minits__pause-play" type="button" value="pause/play"></button>
+                <button class="minits__reset" type="button" value="reset"></button>
+            </div>
+        </main>
+    </div>
 </body>
 
 </html>
