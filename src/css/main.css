@@ -2,4 +2,20 @@
 
 body {
     background-color: cornflowerblue;
+    background-color: hsl(var(--clr-purple));
+    font-family: var(--ff-quicksand);
+}
+
+h1 {
+    font-size: var(--fs-700);
+}
+
+h2 {
+    font-size: var(--fs-900);
+    font-weight: 500;
+}
+
+button {
+    font-family: inherit;
+    font-weight: 700;
 }

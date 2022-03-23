@@ -1,17 +1,43 @@
+@font-face {
+    font-family: Quicksand;
+    font-weight: 500;
+    font-display: swap;
+    src: local(""), url("../assets/fonts/Quicksand-Medium.ttf");
+}
+
+@font-face {
+    font-family: Quicksand;
+    font-weight: 700;
+    font-display: swap;
+    src: local(""), url("../assets/fonts/Quicksand-Bold.ttf");
+}
+
+
+
 /* ----- ================= ----- */
 /* ----- Custom Porperties ----- */
 /* ----- ================= ----- */
 
+
 :root {
 
+    /* font-families */
+    --ff-quicksand: Quicksand, monospace;
+
     /* font-sizes */
-    --fs-900: 4.209rem;
-    --fs-800: 3.157rem;
+    --fs-900: 6.209rem;
+    --fs-800: 4.301rem;
     --fs-700: 2.369rem;
-    --fs-600: 1.777rem;
-    --fs-500: 1.333rem;
+    --fs-600: 1.377rem;
+    --fs-500: 1.033rem;
     --fs-400: 1rem;
-    --fs-300: .75rem;
-    --fs-200: .563rem;
-    --fs-100: .422rem;
+    --fs-300: .65rem;
+    --fs-200: .463rem;
+    --fs-100: .322rem;
+
+    /* colors */
+    --clr-purple: 242 100% 78%;
+    --clr-grey: 0 0% 25%;
+    --clr-black: 0 0% 8%;
+    --clr-white: 0 0% 100%;
 }
