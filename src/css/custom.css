@@ -36,8 +36,29 @@
     --fs-100: .322rem;
 
     /* colors */
+    --bg-main: 242 100% 78%;
+    --bg-nav-btn: 0 0% 100%;
+    --bg-timer: 0 0% 100%;
+    --bg-primary-control: 0 0% 25%;
+    --bg-secondary-controls: 0 0% 100%;
+
+    --c-nav-btn-text: 0 0% 8%;
+    --c-timer-text: 0 0% 8%;
+
+
     --clr-purple: 242 100% 78%;
     --clr-grey: 0 0% 25%;
     --clr-black: 0 0% 8%;
     --clr-white: 0 0% 100%;
+}
+
+
+
+/* ----- =============== ----- */
+/* ----- Utility classes ----- */
+/* ----- =============== ----- */
+
+
+.flex {
+    display: flex;
 }
