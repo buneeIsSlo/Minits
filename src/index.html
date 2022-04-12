@@ -9,7 +9,7 @@
 </head>
 
 <body class="minits">
-    <div class="minits__container">
+    <div class="minits__container flex">
         <header class="minits__header flex">
             <h1 class="minits__logo">Minits </h1>
             <button class="minits__settings"></button>
@@ -34,9 +34,15 @@
                 </div>
             </div>
             <div class="minits__controls flex">
-                <button class="minits__ambience" type="button" value="ambience"></button>
-                <button class="minits__pause-play" type="button" value="pause/play"></button>
-                <button class="minits__reset" type="button" value="reset"></button>
+                <button class="minits__ambience" type="button" value="ambience">
+                    <span id="ambience">&#8710;</span>
+                </button>
+                <button class="minits__pause-play" type="button" value="pause/play">
+                    <span id="pause-play">&#8712;</span>
+                </button>
+                <button class="minits__reset" type="button" value="reset">
+                    <span id="reset">&#8711;</span>
+                </button>
             </div>
         </main>
     </div>
