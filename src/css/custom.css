@@ -25,10 +25,11 @@
     --ff-quicksand: Quicksand, monospace;
 
     /* font-sizes */
+    --fs-1000: 7.4rem;
     --fs-900: 6.209rem;
     --fs-800: 4.301rem;
     --fs-700: 2.369rem;
-    --fs-600: 1.377rem;
+    --fs-600: 1.177rem;
     --fs-500: 1.033rem;
     --fs-400: 1rem;
     --fs-300: .65rem;
@@ -41,6 +42,7 @@
     --bg-timer: 0 0% 100%;
     --bg-primary-control: 0 0% 25%;
     --bg-secondary-controls: 0 0% 100%;
+
 
     --c-nav-btn-text: 0 0% 8%;
     --c-timer-text: 0 0% 8%;
