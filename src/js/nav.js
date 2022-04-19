@@ -24,12 +24,6 @@ export default class Nav {
 
         if (!this.pomodoro || !this.shortBreak || !this.longBreak) return false;
 
-        // this.pomodoroTime = "25:00";
-        // this.shortBreakTime = "10:00";
-        // this.longBreakTime = "45:00";
-        // this.timerType;
-        // this.time;
-
         return true;
     }
 
@@ -38,9 +32,9 @@ export default class Nav {
         this.navBtns.forEach((btn) => {
             btn.addEventListener("click", () => {
                 this.addActiveClass(btn);
-                console.log(btn.dataset.timerType);
-                console.log(btn.dataset.time);
-                new Timer("pomodor", btn.dataset.time);
+                let dataTime = btn.dataset.time;
+                new Timer("pomodor", this.toSeconds(dataTime));
+                console.log(new Timer("pomodoro", this.toSeconds(dataTime)));
             })
         });
 
@@ -56,5 +50,9 @@ export default class Nav {
         this.navBtns.forEach((btn) => {
             btn.classList.remove("active");
         });
+    }
+
+    toSeconds(t) {
+        return t * 60;
     }
 }
