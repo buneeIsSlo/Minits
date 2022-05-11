@@ -231,10 +231,6 @@ button {
    border-radius: 3px;
 }
 
-.minits__settings-general {
-    background-color: salmon;
-}
-
 .minits__settings-appearance {
     background-color: cornflowerblue;
 }
@@ -266,13 +262,49 @@ button {
     margin: 1rem auto;
     height: 90%;
     max-height: 420px;
-    padding: .5em;
 }
 
 .child {
     height: 100%;
     width: 100%;
+    /* background-color: #eee; */
+}
+
+.section-title {
     background-color: #eee;
+    margin: 0;
+    padding: .5em .4em;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+}
+
+.minits__settings-timer-controls {
+    padding: .5em .8rem;
+}
+
+.minits__settings-timer-pomodoro {
+    justify-content: space-between;
+    margin: .2rem auto;
+    /* background-color: yellow; */
+}
+
+input {
+    width: 60px;
+    padding: .2em;
+    border: 2px solid hsl(243deg 58% 59%);
+    border-radius: 3px;
+}
+
+input[type=checkbox] {
+    width: 50px;
+    height: 20px;
+    opacity: 0;
+}
+
+input:checked+.round {
+    transform: translateX(25px);
+    background-color: hsl(243deg 58% 59%);
 }
 
 .tex {
