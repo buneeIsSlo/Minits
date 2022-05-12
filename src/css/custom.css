@@ -79,25 +79,40 @@
 .seperator {
     border: none;
     border-bottom: 1px solid #eee;
-    width: 80%;
+    margin: .8rem auto;
+    /* width: 80%; */
 }
 
 .toggle {
-    outline: 2px solid #404040;
-    border-radius: 50px;
     position: relative;
-    /* background-color: #c0c0c0; */
+    display: inline-block;
+    width: 50px;
+    height: 25px;
 }
 
-.round {
+.slider {
+    position:absolute;
+    inset: 0;
+    background-color: #ccc;
+    outline: 2px solid #404040;
+    transition: background .3s;
+    cursor: pointer;
+}
+
+.slider:before {
+    content: "";
     position: absolute;
-    top: 1px;
-    left: 0px;
     width: 25px;
     height: 25px;
-    border-radius: 200px;
-    background-color: #404040;
-    transition: all .4s ease-in-out;
-    pointer-events: none;
     outline: 2px solid #404040;
+    background-color: #fff;
+    transition: transform .3s cubic-bezier(0, -0.6, 0.32, 1.6);
+}
+
+.slider {
+    border-radius: 25px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }

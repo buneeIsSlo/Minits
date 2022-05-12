@@ -69,27 +69,37 @@
                     <div class="minits__settings-controls">
                         <div class="child">
                             <div class="minits__settings-timer-section">
-                                <p class="section-title">Edit Timer</p>
+                                <p class="section-title">Timer</p>
                                 <div class="minits__settings-timer-controls">
                                     <div class="minits__settings-timer-pomodoro flex">
-                                        <label for="pomdoro">Pomodoro</label>
-                                        <input id="pomodoro" type="number" name="pomodoro">
+                                        <label class="minits__settings-label" for="input-pomdoro">Pomodoro</label>
+                                        <input id="inputPomdoro" type="number">
                                     </div>
                                     <div class="minits__settings-timer-pomodoro flex">
-                                        <label for="pomdoro">Pomodoro</label>
-                                        <input type="number" name="pomodoro">
+                                        <label class="minits__settings-label" for="inputShortBreak">Short
+                                            break</label>
+                                        <input id="inputShortBreak" type="number">
                                     </div>
                                     <div class="minits__settings-timer-pomodoro flex">
-                                        <label for="pomdoro">Pomodoro</label>
-                                        <input type="number" name="pomodoro">
+                                        <label class="minits__settings-label" for="inputLongBreak">Long break</label>
+                                        <input id="inputLongBreak type=" number">
                                     </div>
                                     <hr class="seperator">
                                     <div class="minits__settings-timer-pomodoro flex">
-                                        <label for="auto">Auto-start next timer</label>
-                                        <div class="toggle toggle--container">
-                                            <input type="checkbox" id="auto">
-                                            <span class="round"></span>
-                                        </div>
+                                        <label class="minits__settings-label" for="autoPomodoro">Auto start
+                                            Pomodoro</label>
+                                        <label class="toggle">
+                                            <input type="checkbox" id="autoPomodoro">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="minits__settings-timer-pomodoro flex">
+                                        <label class="minits__settings-label" for="autoBreak">Auto start
+                                            Break</label>
+                                        <label class="toggle">
+                                            <input type="checkbox" id="autoBreak">
+                                            <span class="slider round"></span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
