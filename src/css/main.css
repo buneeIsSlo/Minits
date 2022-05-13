@@ -175,7 +175,7 @@ button {
 
 .minits__settings-popup {
     height: 660px;
-    width: 300px;
+    width: 360px;
     background-color: #fff;
     border-radius: 15px;
     position: absolute;
@@ -187,7 +187,6 @@ button {
     /* transform: translateX(50%); */
     animation: .3s translateIn ease-in-out forwards;
     /* z-index: -1; */
-    max-width: 320px;
     padding: .4em 1em;
 }
 
@@ -270,25 +269,26 @@ button {
     /* background-color: #eee; */
 }
 
-.section-title {
+.section--title {
+    color: #5e5e5e;
     letter-spacing: .1em;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 700;
-    margin: 0;
-    padding: .5em .4em;
+    margin: .2rem 0;
+    padding: .4rem;
     background-color: #eee;
 }
 
-.minits__settings-timer-controls {
+.minits__settings--center {
     padding: .5em .8rem;
 }
 
-.minits__settings-timer-pomodoro {
+.controls--wrapper {
     justify-content: space-between;
     align-items: center;
     margin: .3rem auto;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 
 input {

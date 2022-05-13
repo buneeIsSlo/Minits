@@ -88,6 +88,7 @@
     display: inline-block;
     width: 50px;
     height: 25px;
+    margin: .2em 0;
 }
 
 .slider {
