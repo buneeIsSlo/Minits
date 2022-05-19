@@ -230,10 +230,6 @@ button {
    border-radius: 3px;
 }
 
-.minits__settings-appearance {
-    background-color: cornflowerblue;
-}
-
 .minits__settings-sound {
     background-color: #c0c0c0;
 }
@@ -284,7 +280,7 @@ button {
     padding: .5em .8rem;
 }
 
-.controls--wrapper {
+.minits__settings-controls--wrapper {
     justify-content: space-between;
     align-items: center;
     margin: .3rem auto;
@@ -305,11 +301,21 @@ input[type=checkbox] {
 
 input:checked+.slider {
     background-color: hsl(243deg 58% 59%); 
-    /* background-color: #404040;  */
 }
 
 input:checked+.slider:before {
     transform: translateX(25px);
+}
+
+.palette-color:hover {
+    filter:brightness(.9);
+}
+
+.radio:checked~.palette-color{
+    outline: 2px solid #404040;
+    outline-offset: 2px;
+    pointer-events: none;
+    cursor: initial;
 }
 
 .tex {

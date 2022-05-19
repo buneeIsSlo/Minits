@@ -38,6 +38,7 @@
 
     /* colors */
     --bg-main: 242 100% 78%;
+    /* --bg-main: 36 100% 68%; */
     --bg-nav-btn: 0 0% 100%;
     --bg-timer: 0 0% 100%;
     --bg-primary-control: 0 0% 25%;
@@ -63,6 +64,11 @@
 
 .flex {
     display: flex;
+}
+
+.column {
+    flex-direction: column;
+    align-items: center;
 }
 
 .hide {
@@ -116,4 +122,34 @@
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.palette--wrapper {
+    width: 100%;
+    padding: .5rem;
+    margin: .5rem 0;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    border-radius: 50px;
+}
+
+.palette {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.radio {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.palette-color {
+    position: absolute;
+    inset: 0;
+    background-color: rgb(255, 75, 75);
+    border-radius: 50px;
+    cursor: pointer;
 }

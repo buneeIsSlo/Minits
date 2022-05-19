@@ -71,21 +71,21 @@
                             <div class="minits__settings-timer-section">
                                 <p class="section--title">Timer</p>
                                 <div class="minits__settings--center">
-                                    <div class="controls--wrapper flex">
-                                        <label class="minits__settings-label" for="input-pomdoro">Pomodoro</label>
-                                        <input id="inputPomdoro" type="number">
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label class="minits__settings-label" for="inputPomodoro">Pomodoro</label>
+                                        <input id="inputPomodoro" type="number">
                                     </div>
-                                    <div class="controls--wrapper flex">
+                                    <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="inputShortBreak">Short
                                             Break</label>
                                         <input id="inputShortBreak" type="number">
                                     </div>
-                                    <div class="controls--wrapper flex">
+                                    <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="inputLongBreak">Long Break</label>
                                         <input id="inputLongBreak" type="number">
                                     </div>
                                     <hr class="seperator">
-                                    <div class="controls--wrapper flex">
+                                    <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="autoPomodoro">Auto start
                                             Pomodoro?</label>
                                         <label class="toggle">
@@ -93,7 +93,7 @@
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
-                                    <div class="controls--wrapper flex">
+                                    <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="autoBreak">Auto start
                                             Break?</label>
                                         <label class="toggle">
@@ -107,7 +107,7 @@
                             <div class="minits__settings-notis-section">
                                 <p class="section--title">Notifications</p>
                                 <div class="minits__settings--center">
-                                    <div class="controls--wrapper flex">
+                                    <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="notifications">Allow
                                             Notifications?</label>
                                         <label class="toggle">
@@ -121,13 +121,57 @@
                     </div>
                 </div>
                 <div class="minits__settings-appearance minits__settings-controls-wrapper hide">
-                    <span class="minits__settings-type">Appearance</span>
+                    <h4 class="minits__settings-type">Appearance</h4>
                     <div class="minits__settings-controls">
-                        <div class="child"></div>
+                        <div class="child">
+                            <div class="minits__settings-themes-section">
+                                <p class="section--title">Themes</p>
+                                <div class="minits__settings--center">
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label class="minits__settings-label" for="darkMode">Dark mode?</label>
+                                        <label class="toggle">
+                                            <input type="checkbox" id="darkMode">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <hr class="seperator">
+                                    <div class="">
+                                        <div class="select flex column">
+                                            <span>Pick Timer Style</span>
+                                            <div class="palette--wrapper flex">
+                                                <label class="palette">
+                                                    <input class="radio" type="radio" name="radio">
+                                                    <span class="palette-color"></span>
+                                                </label>
+                                                <label class="palette">
+                                                    <input class="radio" type="radio" name="radio">
+                                                    <span class="palette-color"></span>
+                                                </label>
+                                                <label class="palette">
+                                                    <input class="radio" type="radio" name="radio">
+                                                    <span class="palette-color"></span>
+                                                </label>
+                                                <label class="palette">
+                                                    <input class="radio" type="radio" name="radio">
+                                                    <span class="palette-color"></span>
+                                                </label>
+                                                <label class="palette">
+                                                    <input class="radio" type="radio" name="radio">
+                                                    <span class="palette-color"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="minits__settings-misc-section">
+                                <p class="section--title">Misc</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="minits__settings-sound minits__settings-controls-wrapper hide">
-                    <span class="minits__settings-type">Sound</span>
+                    <h4 class="minits__settings-type">Sound</h4>
                     <div class="minits__settings-controls">
                         <div class="child"></div>
                     </div>
