@@ -73,7 +73,7 @@
                                 <div class="minits__settings--center">
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="inputPomodoro">Pomodoro</label>
-                                        <input id="inputPomodoro" type="number">
+                                        <input id="inputPomodoro" type="number" value="25">
                                     </div>
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="inputShortBreak">Short
@@ -128,7 +128,7 @@
                                 <p class="section--title">Themes</p>
                                 <div class="minits__settings--center">
                                     <div class="minits__settings-controls--wrapper flex">
-                                        <label class="minits__settings-label" for="darkMode">Dark mode?</label>
+                                        <label class="minits__settings-label" for="darkMode">Enable Dark mode?</label>
                                         <label class="toggle">
                                             <input type="checkbox" id="darkMode">
                                             <span class="slider round"></span>
@@ -163,7 +163,25 @@
                                 </div>
                             </div>
                             <div class="minits__settings-misc-section">
-                                <p class="section--title">Misc</p>
+                                <p class="section--title">Miscellaneous</p>
+                                <div class="minits__settings--center">
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label class="minits__settings-label" for="timerInTitle">Enable Timer in
+                                            title?</label>
+                                        <label class="toggle">
+                                            <input type="checkbox" id="timerInTitle">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label class="minits__settings-label" for="nowPlaying">Enable Now
+                                            playing?</label>
+                                        <label class="toggle">
+                                            <input type="checkbox" id="nowPlaying">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -171,7 +189,11 @@
                 <div class="minits__settings-sound minits__settings-controls-wrapper hide">
                     <h4 class="minits__settings-type">Sound</h4>
                     <div class="minits__settings-controls">
-                        <div class="child"></div>
+                        <div class="child">
+                            <div class="minits__settings-alarm-section">
+                                <p class="section--title">Alarm</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

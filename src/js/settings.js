@@ -12,21 +12,29 @@ export default class Settings {
             settingsBtn: ".minits__settings",
             settingsPopup: ".minits__settings-popup",
             settingsNavBtns: ".minits__settings-nav-btn",
-            settingsControls: ".minits__settings-controls-wrapper"
+            settingsControls: ".minits__settings-controls-wrapper",
+            inputPomdoro: "inputPomodoro"
         }
 
         this.settingsBtn = document.querySelector(`${this.selectors.settingsBtn}`);
         this.settingsPopup = document.querySelector(`${this.selectors.settingsPopup}`);
         this.navBtns = document.querySelectorAll(`${this.selectors.settingsNavBtns}`);
         this.settingsControls = document.querySelectorAll(`${this.selectors.settingsControls}`);
+        this.inputPomodoro = document.getElementById(`${this.selectors.inputPomdoro}`);
 
         this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
         this.closeSVG = document.getElementById(`${this.selectors.closeSVG}`);
+
+        this.appState = {
+            pomodoroTime: this.inputPomodoro.value
+        }
 
         return true;
     }
 
     setUpEvents() {
+
+        console.log(JSON.parse(localStorage.getItem("appState")));
 
         this.settingsBtn.addEventListener("click", () => {
             this.settingsSVG.classList.toggle("hide");
@@ -45,6 +53,17 @@ export default class Settings {
                 this.settingsControls[index].classList.remove("hide");
 
             })
+        })
+
+
+        this.inputPomodoro.value = JSON.parse(localStorage.getItem("appState")).pomodoroTime;
+        this.handleTimerInput();
+    }
+
+    handleTimerInput() {
+        this.inputPomodoro.addEventListener("input", () => {
+            this.appState.pomodoroTime = this.inputPomodoro.value;
+            localStorage.setItem("appState", JSON.stringify(this.appState));
         })
     }
 
