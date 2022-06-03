@@ -1,3 +1,5 @@
+import { setTime } from "./common";
+
 export default class Settings {
     constructor() {
         if (!this.vars()) return false;
@@ -13,20 +15,31 @@ export default class Settings {
             settingsPopup: ".minits__settings-popup",
             settingsNavBtns: ".minits__settings-nav-btn",
             settingsControls: ".minits__settings-controls-wrapper",
-            inputPomdoro: "inputPomodoro"
+            minitsTime: ".minits__time",
+            timerType: ".minits--nav-btn",
+            timerInput: ".minits__settings-timer-input",
+            toggles: "data-toggle"
         }
 
         this.settingsBtn = document.querySelector(`${this.selectors.settingsBtn}`);
         this.settingsPopup = document.querySelector(`${this.selectors.settingsPopup}`);
         this.navBtns = document.querySelectorAll(`${this.selectors.settingsNavBtns}`);
         this.settingsControls = document.querySelectorAll(`${this.selectors.settingsControls}`);
-        this.inputPomodoro = document.getElementById(`${this.selectors.inputPomdoro}`);
+        this.minitsTime = document.querySelector(`${this.selectors.minitsTime}`);
+        this.timerType = document.querySelectorAll(`${this.selectors.timerType}`);
+        this.timerInput = document.querySelectorAll(`${this.selectors.timerInput}`);
+        this.toggles = document.querySelectorAll(`[${this.selectors.toggles}]`);
 
         this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
         this.closeSVG = document.getElementById(`${this.selectors.closeSVG}`);
 
+        this.default = -1;
+
         this.appState = {
-            pomodoroTime: this.inputPomodoro.value
+            "pomodoro": 25,
+            "shortBreak": 5,
+            "longBreak": 15,
+
         }
 
         return true;
@@ -34,7 +47,6 @@ export default class Settings {
 
     setUpEvents() {
 
-        console.log(JSON.parse(localStorage.getItem("appState")));
 
         this.settingsBtn.addEventListener("click", () => {
             this.settingsSVG.classList.toggle("hide");
@@ -55,15 +67,57 @@ export default class Settings {
             })
         })
 
-
-        this.inputPomodoro.value = JSON.parse(localStorage.getItem("appState")).pomodoroTime;
+        this.getState();
         this.handleTimerInput();
+        this.handleToggles();
+    }
+
+    getState() {
+        let storedData = JSON.parse(localStorage.getItem("appState")) || this.appState;
+
+        this.timerInput.forEach((input, i) => {
+            input.value = storedData[input.dataset.timerType];
+        })
+
+        this.toggles.forEach(toggle => {
+            toggle.checked = storedData[`${toggle.dataset.toggle}`];
+        })
+
+        console.log(this.toggles);
     }
 
     handleTimerInput() {
-        this.inputPomodoro.addEventListener("input", () => {
-            this.appState.pomodoroTime = this.inputPomodoro.value;
-            localStorage.setItem("appState", JSON.stringify(this.appState));
+        this.timerInput.forEach((input, i) => {
+            input.addEventListener("input", () => {
+                // let type = this.timerType[i];
+                let forTimerType = document.querySelector(`button[data-timer-type="${input.dataset.timerType}"]`);
+
+                forTimerType.dataset.time = input.value;
+                this.appState[forTimerType.dataset.timerType] = input.value;
+
+                localStorage.setItem("appState", JSON.stringify(this.appState));
+
+                if (forTimerType.classList.contains("active")) {
+                    this.minitsTime.dataset.secondsStart = forTimerType.dataset.time * 60;
+                    this.minitsTime.dataset.secondsLeft = forTimerType.dataset.time * 60;
+
+                    setTime(this.minitsTime.dataset.secondsLeft, this.minitsTime);
+                }
+
+            })
+        })
+    }
+
+    handleToggles() {
+        this.toggles.forEach(toggle => {
+            toggle.addEventListener("change", () => {
+                let res = toggle.checked ? true : false;
+
+                this.appState[toggle.dataset.toggle] = res;
+                console.log(toggle.checked);
+
+                localStorage.setItem("appState", JSON.stringify(this.appState));
+            })
         })
     }
 

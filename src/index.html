@@ -27,7 +27,7 @@
                 </svg>
 
             </button>
-            <div class="minits__settings-popup hide">
+            <div class="minits__settings-popup">
                 <div class="minits__settings-header">
                     <h3 class="minits__settings-title">Settings</h3>
                 </div>
@@ -73,23 +73,26 @@
                                 <div class="minits__settings--center">
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="inputPomodoro">Pomodoro</label>
-                                        <input id="inputPomodoro" type="number" value="25">
+                                        <input class="minits__settings-timer-input" id="inputPomodoro" type="number"
+                                            data-timer-type="pomodoro">
                                     </div>
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="inputShortBreak">Short
                                             Break</label>
-                                        <input id="inputShortBreak" type="number">
+                                        <input class="minits__settings-timer-input" id="inputShortBreak" type="number"
+                                            data-timer-type="shortBreak">
                                     </div>
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="inputLongBreak">Long Break</label>
-                                        <input id="inputLongBreak" type="number">
+                                        <input class="minits__settings-timer-input" id="inputLongBreak" type="number"
+                                            data-timer-type="longBreak">
                                     </div>
                                     <hr class="seperator">
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="autoPomodoro">Auto start
                                             Pomodoro?</label>
                                         <label class="toggle">
-                                            <input type="checkbox" id="autoPomodoro">
+                                            <input type="checkbox" id="autoPomodoro" data-toggle="autostartPomodoro">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -97,7 +100,7 @@
                                         <label class="minits__settings-label" for="autoBreak">Auto start
                                             Break?</label>
                                         <label class="toggle">
-                                            <input type="checkbox" id="autoBreak">
+                                            <input type="checkbox" id="autoBreak" data-toggle="autostartBreak">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -111,7 +114,7 @@
                                         <label class="minits__settings-label" for="notifications">Allow
                                             Notifications?</label>
                                         <label class="toggle">
-                                            <input type="checkbox" id="notifications">
+                                            <input type="checkbox" id="notifications" data-toggle="notifications">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -130,7 +133,7 @@
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label class="minits__settings-label" for="darkMode">Enable Dark mode?</label>
                                         <label class="toggle">
-                                            <input type="checkbox" id="darkMode">
+                                            <input type="checkbox" id="darkMode" data-toggle="darkMode">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -169,7 +172,7 @@
                                         <label class="minits__settings-label" for="timerInTitle">Enable Timer in
                                             title?</label>
                                         <label class="toggle">
-                                            <input type="checkbox" id="timerInTitle">
+                                            <input type="checkbox" id="timerInTitle" data-toggle="timerInTitle">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -177,7 +180,7 @@
                                         <label class="minits__settings-label" for="nowPlaying">Enable Now
                                             playing?</label>
                                         <label class="toggle">
-                                            <input type="checkbox" id="nowPlaying">
+                                            <input type="checkbox" id="nowPlaying" data-toggle="nowPlaying">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -207,10 +210,10 @@
                     </li>
                     <li class="minits__item">
                         <button class="minits__short-break minits--nav-btn" id="short-break"
-                            data-timer-type="short break" data-time="05">Short Break</button>
+                            data-timer-type="shortBreak" data-time="05">Short Break</button>
                     </li>
                     <li class="minits__item">
-                        <button class="minits__long-break minits--nav-btn" id="long-break" data-timer-type="long break"
+                        <button class="minits__long-break minits--nav-btn" id="long-break" data-timer-type="longBreak"
                             data-time="15">Long Break</button>
                     </li>
                 </ul>
