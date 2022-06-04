@@ -33,14 +33,13 @@ export default class Settings {
         this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
         this.closeSVG = document.getElementById(`${this.selectors.closeSVG}`);
 
-        this.default = -1;
-
         this.appState = {
             "pomodoro": 25,
             "shortBreak": 5,
             "longBreak": 15,
-
         }
+
+        this.savedSettings = JSON.parse(localStorage.getItem("appState")) || localStorage.setItem("appState", JSON.stringify(this.appState));
 
         return true;
     }
@@ -68,22 +67,23 @@ export default class Settings {
         })
 
         this.getState();
+        console.log(this.appState);
         this.handleTimerInput();
         this.handleToggles();
     }
 
     getState() {
-        let storedData = JSON.parse(localStorage.getItem("appState")) || this.appState;
+        // let storedData = JSON.parse(localStorage.getItem("appState")) || this.appState;
+        // this.appState = JSON.parse(localStorage.getItem("appState")) || this.appState;
 
         this.timerInput.forEach((input, i) => {
-            input.value = storedData[input.dataset.timerType];
+            input.value = this.savedSettings[`${input.dataset.timerType}`];
         })
 
         this.toggles.forEach(toggle => {
-            toggle.checked = storedData[`${toggle.dataset.toggle}`];
+            toggle.checked = this.savedSettings[`${toggle.dataset.toggle}`];
         })
 
-        console.log(this.toggles);
     }
 
     handleTimerInput() {
@@ -93,9 +93,9 @@ export default class Settings {
                 let forTimerType = document.querySelector(`button[data-timer-type="${input.dataset.timerType}"]`);
 
                 forTimerType.dataset.time = input.value;
-                this.appState[forTimerType.dataset.timerType] = input.value;
+                this.savedSettings[forTimerType.dataset.timerType] = input.value;
 
-                localStorage.setItem("appState", JSON.stringify(this.appState));
+                localStorage.setItem("appState", JSON.stringify(this.savedSettings));
 
                 if (forTimerType.classList.contains("active")) {
                     this.minitsTime.dataset.secondsStart = forTimerType.dataset.time * 60;
@@ -110,14 +110,15 @@ export default class Settings {
 
     handleToggles() {
         this.toggles.forEach(toggle => {
+            // console.log(toggle);
             toggle.addEventListener("change", () => {
-                let res = toggle.checked ? true : false;
+                const res = toggle.checked;
 
-                this.appState[toggle.dataset.toggle] = res;
-                console.log(toggle.checked);
+                this.savedSettings[toggle.dataset.toggle] = res;
 
-                localStorage.setItem("appState", JSON.stringify(this.appState));
+                localStorage.setItem("appState", JSON.stringify(this.savedSettings));
             })
+
         })
     }
 
