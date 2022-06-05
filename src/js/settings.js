@@ -37,6 +37,12 @@ export default class Settings {
             "pomodoro": 25,
             "shortBreak": 5,
             "longBreak": 15,
+            "autostartPomodoro": false,
+            "autostartBreak": true,
+            "notifications": false,
+            "darkMode": false,
+            "timerInTitle": true,
+            "nowPlaying": true,
         }
 
         this.savedSettings = JSON.parse(localStorage.getItem("appState")) || localStorage.setItem("appState", JSON.stringify(this.appState));
@@ -45,7 +51,6 @@ export default class Settings {
     }
 
     setUpEvents() {
-
 
         this.settingsBtn.addEventListener("click", () => {
             this.settingsSVG.classList.toggle("hide");
@@ -67,21 +72,21 @@ export default class Settings {
         })
 
         this.getState();
-        console.log(this.appState);
         this.handleTimerInput();
         this.handleToggles();
     }
 
     getState() {
-        // let storedData = JSON.parse(localStorage.getItem("appState")) || this.appState;
-        // this.appState = JSON.parse(localStorage.getItem("appState")) || this.appState;
+        let storedData = this.savedSettings || this.appState;
+        console.log(this.savedSettings);
 
         this.timerInput.forEach((input, i) => {
-            input.value = this.savedSettings[`${input.dataset.timerType}`];
+            input.value = storedData[`${input.dataset.timerType}`];
         })
 
         this.toggles.forEach(toggle => {
-            toggle.checked = this.savedSettings[`${toggle.dataset.toggle}`];
+            toggle.checked = storedData[`${toggle.dataset.toggle}`];
+            if (toggle.checked) this.toggledSetting(toggle.dataset.toggle);
         })
 
     }
@@ -93,7 +98,7 @@ export default class Settings {
                 let forTimerType = document.querySelector(`button[data-timer-type="${input.dataset.timerType}"]`);
 
                 forTimerType.dataset.time = input.value;
-                this.savedSettings[forTimerType.dataset.timerType] = input.value;
+                this.savedSettings[`${forTimerType.dataset.timerType}`] = input.value;
 
                 localStorage.setItem("appState", JSON.stringify(this.savedSettings));
 
@@ -110,17 +115,67 @@ export default class Settings {
 
     handleToggles() {
         this.toggles.forEach(toggle => {
-            // console.log(toggle);
-            toggle.addEventListener("change", () => {
-                const res = toggle.checked;
 
-                this.savedSettings[toggle.dataset.toggle] = res;
+            toggle.addEventListener("change", () => {
+                if (toggle.checked) this.toggledSetting(toggle.dataset.toggle);
+                this.savedSettings[`${toggle.dataset.toggle}`] = toggle.checked;
 
                 localStorage.setItem("appState", JSON.stringify(this.savedSettings));
             })
 
         })
     }
+
+    toggledSetting(toggledOption) {
+
+        switch (toggledOption) {
+            case "autostartPomodoro":
+                this.enableAutostartPomodoro();
+                break;
+            case "autostartBreak":
+                this.enableAutostartBreak();
+                break;
+            case "notifications":
+                this.enableNotifications();
+                break;
+            case "darkMode":
+                this.enableDarkMode();
+                break;
+            case "timerInTitle":
+                this.enableTimerInTitle();
+                break;
+            case "nowPlaying":
+                this.enableNowPlaying();
+                break;
+            default:
+                console.log("Invalid option");
+        }
+    }
+
+    enableAutostartPomodoro() {
+        console.log("pompmo");
+    }
+
+    enableAutostartBreak() {
+        console.log("breakybreak");
+    }
+
+    enableNotifications() {
+        console.log("noti!!");
+    }
+
+    enableDarkMode() {
+        console.log("darkydark");
+    }
+
+    enableTimerInTitle() {
+        console.log("timeytime");
+    }
+
+    enableNowPlaying() {
+        console.log("playiplay");
+    }
+
 
     removeExistingActiveClass() {
         this.navBtns.forEach(btn => btn.classList.remove("tex"));
