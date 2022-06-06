@@ -1,3 +1,5 @@
+import { setTime } from "./common";
+
 export default class Timer {
 
     constructor() {
@@ -33,6 +35,8 @@ export default class Timer {
     }
 
     setUpEvents() {
+        this.savedettings = JSON.parse(localStorage.getItem("appState"));
+
         this.init();
 
         this.handleNav();
@@ -47,9 +51,10 @@ export default class Timer {
     }
 
     init() {
+
         this.minitsTime.dataset.secondsStart = this.toSeconds(this.pomodoro.dataset.time);
         this.minitsTime.dataset.secondsLeft = this.toSeconds(this.pomodoro.dataset.time);
-        this.setTime(this.minitsTime.dataset.secondsLeft);
+        setTime(this.minitsTime.dataset.secondsLeft, this.minitsTime);
     }
 
     handleNav() {
@@ -62,7 +67,7 @@ export default class Timer {
 
                 this.minitsTime.dataset.secondsStart = dataTime;
                 this.minitsTime.dataset.secondsLeft = dataTime;
-                this.setTime(dataTime);
+                setTime(dataTime, this.minitsTime);
             })
         });
     }
@@ -83,7 +88,7 @@ export default class Timer {
 
         this.minitsTime.classList.remove(this.selectors.utilTimerRunning);
 
-        this.setTime(startTime);
+        setTime(startTime, this.minitsTime);
         this.minitsTime.dataset.secondsLeft = startTime;
     }
 
@@ -106,10 +111,18 @@ export default class Timer {
         const now = Date.now();
         const endTime = now + (time * 1000);
 
+        console.log(this.minitsTime);
+
         const countdown = setInterval(() => {
-            if (this.minitsTime.classList.contains(this.selectors.utilTimerRunning)) {
+            if (this.minitsTime.dataset.secondsLeft == 55) {
+                setTime(this.minitsTime.dataset.secondsStart, this.minitsTime);
+                this.switchSVG();
+                clearInterval(countdown);
+                console.log("hello??");
+            }
+            else if (this.minitsTime.classList.contains(this.selectors.utilTimerRunning)) {
                 let secondsLeft = Math.round((endTime - Date.now()) / 1000);
-                this.setTime(secondsLeft);
+                setTime(secondsLeft, this.minitsTime);
                 this.minitsTime.dataset.secondsLeft = secondsLeft;
             }
             else {

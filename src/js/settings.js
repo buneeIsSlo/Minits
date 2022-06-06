@@ -158,6 +158,9 @@ export default class Settings {
 
     enableAutostartBreak() {
         console.log("breakybreak");
+
+        if (+(this.minitsTime.dataset.secondsLeft) < 57)
+            this.timerType[1].click();
     }
 
     enableNotifications() {
