@@ -78,7 +78,6 @@ export default class Settings {
 
     getState() {
         let storedData = this.savedSettings || this.appState;
-        console.log(this.savedSettings);
 
         this.timerInput.forEach((input, i) => {
             input.value = storedData[`${input.dataset.timerType}`];

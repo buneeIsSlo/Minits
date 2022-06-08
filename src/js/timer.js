@@ -67,14 +67,8 @@ export default class Timer {
     handleNav() {
         this.navBtns.forEach((btn) => {
             btn.addEventListener("click", () => {
-                this.addActiveClass(btn);
+                this.setActive(btn, btn.dataset.time);
                 this.minitsTime.classList.remove(this.selectors.utilTimerRunning);
-
-                let dataTime = this.toSeconds(btn.dataset.time);
-
-                this.minitsTime.dataset.secondsStart = dataTime;
-                this.minitsTime.dataset.secondsLeft = dataTime;
-                setTime(dataTime, this.minitsTime);
             })
         });
     }
@@ -121,17 +115,17 @@ export default class Timer {
         const endTime = now + (time * 1000);
 
         const countdown = setInterval(() => {
-            console.log("aye new ting");
             if (this.minitsTime.dataset.secondsLeft == 55) {
-                // this.minitsTime.dataset.secondsLeft = this.minitsTime.dataset.secondsStart;
-                // setTime(this.minitsTime.dataset.secondsStart, this.minitsTime);
-                // this.switchSVG();
                 clearInterval(countdown);
                 this.resetTime();
 
                 if (this.pomodoro.classList.contains(this.selectors.utilActive) &&
                     JSON.parse(localStorage.getItem("appState"))["autostartBreak"] == true) {
-                    this.nextTimer();
+                    this.autoStartBreak();
+                }
+                else if (this.shortBreak.classList.contains(this.selectors.utilActive) &&
+                    JSON.parse(localStorage.getItem("appState"))["autostartPomodoro"] == true) {
+                    this.autoStartPomodoro();
                 }
             }
             else if (this.minitsTime.classList.contains(this.selectors.utilTimerRunning)) {
@@ -148,15 +142,8 @@ export default class Timer {
 
     }
 
-    nextTimer() {
-        this.pomodoro.classList.remove(this.selectors.utilActive);
-        this.shortBreak.classList.add(this.selectors.utilActive);
-
-        let dataTime = this.savedSettings[`${this.shortBreak.dataset.timerType}`];
-
-        this.minitsTime.dataset.secondsStart = this.toSeconds(dataTime);
-        this.minitsTime.dataset.secondsLeft = this.toSeconds(dataTime);
-        setTime(this.minitsTime.dataset.secondsLeft, this.minitsTime);
+    autoStartBreak() {
+        this.setActive(this.shortBreak, this.savedSettings[`${this.shortBreak.dataset.timerType}`]);
 
         setTimeout(() => {
             this.playSVG.classList.add(this.selectors.utilHide);
@@ -166,25 +153,30 @@ export default class Timer {
         }, 1000)
     }
 
+    autoStartPomodoro() {
+        this.setActive(this.pomodoro, this.savedSettings[`${this.pomodoro.dataset.timerType}`]);
+
+        setTimeout(() => {
+            this.playSVG.classList.add(this.selectors.utilHide);
+            this.pauseSVG.classList.remove(this.selectors.utilHide);
+            this.minitsTime.classList.toggle(this.selectors.utilTimerRunning);
+            this.beginCountdown(this.minitsTime.dataset.secondsStart);
+        }, 1000)
+    }
+
+    setActive(timer, time) {
+        this.addActiveClass(timer);
+
+        this.minitsTime.dataset.secondsStart = this.toSeconds(time);
+        this.minitsTime.dataset.secondsLeft = this.toSeconds(time);
+        setTime(this.minitsTime.dataset.secondsLeft, this.minitsTime);
+    }
+
     currentTimer() {
         this.navBtns.forEach(timer => {
             if (timer.classList.contains(this.selectors.utilActive))
                 return timer.dataset.timerType;
         })
-    }
-
-    setTime(seconds) {
-        let mins = Math.floor(seconds / 60);
-        let secs = seconds % 60;
-
-        mins = mins < 10 ? `0${mins}` : mins;
-        secs = secs < 10 ? `0${secs}` : secs;
-
-        this.displayTime(mins, secs);
-    }
-
-    displayTime(minutes, seconds) {
-        this.minitsTime.innerHTML = `${minutes}:${seconds}`;
     }
 
     switchSVG() {
