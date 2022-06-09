@@ -17,6 +17,7 @@ export default class Timer {
             minitsTime: ".minits__time",
             timerControl: ".minits__pause-play",
             resetControl: ".minits__reset",
+            timerInputs: ".minits__settings-timer-input",
             playSVG: "play-icon",
             pauseSVG: "pause-icon",
             utilActive: "active",
@@ -31,6 +32,7 @@ export default class Timer {
         this.minitsTime = document.querySelector(`${this.selectors.minitsTime}`);
         this.timerControl = document.querySelector(`${this.selectors.timerControl}`);
         this.resetControl = document.querySelector(`${this.selectors.resetControl}`);
+        this.timerInputs = document.querySelector(`${this.selectors.timerInputs}`);
         this.playSVG = document.getElementById(`${this.selectors.playSVG}`);
         this.pauseSVG = document.getElementById(`${this.selectors.pauseSVG}`);
 
@@ -118,6 +120,12 @@ export default class Timer {
             if (this.minitsTime.dataset.secondsLeft == 55) {
                 clearInterval(countdown);
                 this.resetTime();
+                if (Notification.permission === "granted") {
+                    let img = "src/assest/images/close.svg";
+                    let text = "Move to the next timer.";
+
+                    new Notification("Time up!", { body: text, image: img });
+                }
 
                 if (this.pomodoro.classList.contains(this.selectors.utilActive) &&
                     JSON.parse(localStorage.getItem("appState"))["autostartBreak"] == true) {
@@ -143,7 +151,7 @@ export default class Timer {
     }
 
     autoStartBreak() {
-        this.setActive(this.shortBreak, this.savedSettings[`${this.shortBreak.dataset.timerType}`]);
+        this.setActive(this.shortBreak, this.shortBreak.dataset.time);
 
         setTimeout(() => {
             this.playSVG.classList.add(this.selectors.utilHide);
@@ -154,7 +162,7 @@ export default class Timer {
     }
 
     autoStartPomodoro() {
-        this.setActive(this.pomodoro, this.savedSettings[`${this.pomodoro.dataset.timerType}`]);
+        this.setActive(this.pomodoro, this.pomodoro.dataset.time);
 
         setTimeout(() => {
             this.playSVG.classList.add(this.selectors.utilHide);

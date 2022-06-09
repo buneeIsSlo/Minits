@@ -157,13 +157,11 @@ export default class Settings {
 
     enableAutostartBreak() {
         console.log("breakybreak");
-
-        if (+(this.minitsTime.dataset.secondsLeft) < 57)
-            this.timerType[1].click();
     }
 
     enableNotifications() {
         console.log("noti!!");
+        this.askNotificationPermission();
     }
 
     enableDarkMode() {
@@ -178,6 +176,24 @@ export default class Settings {
         console.log("playiplay");
     }
 
+    askNotificationPermission() {
+        console.log(Notification.permission);
+
+        if (Notification.permission === "denied") {
+            alert("bruhh come on");
+        }
+
+        if (Notification.permission !== "granted") {
+
+            Notification.requestPermission().then((result) => this.handleNotificationPermission());
+        }
+    }
+
+    handleNotificationPermission() {
+        if (Notification.permission === "default" || Notification.permission === "denied") {
+            console.log("oh no");
+        }
+    }
 
     removeExistingActiveClass() {
         this.navBtns.forEach(btn => btn.classList.remove("tex"));
