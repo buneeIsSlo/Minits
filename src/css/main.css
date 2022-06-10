@@ -35,7 +35,7 @@ button {
 
 
 body {
-    background-color: hsl(var(--bg-main));
+    background-color: var(--bg-main);
     height: 100vh;
     min-height: 100vh;
     user-select: none;
@@ -98,10 +98,11 @@ button {
 .minits--nav-btn {
     padding: .7em;
     border-radius: 3px;
-    background-color: hsl(var(--bg-nav-btn));
-    box-shadow: 2px 2px 0px 0px hsla(0, 0%, 0%, 0.3);
+    background-color: var(--bg-nav-btn);
+    box-shadow: 2px 2px 0px 0px var(--shadow-nav-btn);
     cursor: pointer;
     transition: .1s transform ease-in-out;
+    color: var(--c-nav-btn-text);
 }
 
 .minits--nav-btn:active {
@@ -114,8 +115,8 @@ button {
     width: 100%;
     margin: 4rem auto;
     max-width: 290px;
-    background-color: hsl(var(--bg-timer));
-    box-shadow: -8px 7px 0px #404040;
+    background-color: var(--bg-timer);
+    box-shadow: -8px 7px 0px hsla(242 100% 78%);
     border-radius: 20px;
 }
 
@@ -128,6 +129,7 @@ button {
 .minits__time {
     margin: 0;
     padding: .1em 0;
+    color: var(--c-timer-text);
 }
 
 .minits__controls {
@@ -149,8 +151,8 @@ button {
     width: 55px;
     height: 55px;
     border-radius: 100px;
-    background-color: hsl(var(--bg-secondary-controls));
-    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+    background-color: var(--bg-secondary-controls);
+    box-shadow: 0px 3px 0px var(--shadow-controls);
 }
 
 #reset-icon,
@@ -162,8 +164,8 @@ button {
 .minits__pause-play {
     width: 65px;
     height: 65px;
-    background-color: hsl(var(--bg-primary-control));
-    box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
+    background-color: var(--bg-primary-control);
+    box-shadow: 0px 4px 0px var(--shadow-controls);
     color: #fff;
 }
 
@@ -188,10 +190,6 @@ button {
     animation: .3s translateIn ease-in-out forwards;
     /* z-index: -1; */
     padding: .4em 1em;
-}
-
-.minits__settings-header {
-    /* outline: 2px solid red; */
 }
 
 .minits__settings-title {
@@ -409,7 +407,7 @@ input:checked+.slider:before {
 
     .minits--nav-btn {
         font-size: var(--fs-400);
-        box-shadow: 2.5px 2.5px 0px 0px hsla(0, 0%, 0%, 0.3);
+        box-shadow: 2.5px 2.5px 0px 0px var(--shadow-nav-btn);
     }
 
     .minits__timer-outter {
@@ -446,7 +444,7 @@ input:checked+.slider:before {
         font-size: var(--fs-500);
         border-radius: 4px;
         padding: .7em 1.1em;
-        box-shadow: 3px 3px 0px 0px hsla(0, 0%, 0%, 0.3);
+        box-shadow: 3px 3px 0px 0px var(--shadow-nav-btn);
     }
 
     .minits__timer-outter {
@@ -528,7 +526,7 @@ input:checked+.slider:before {
     .minits__reset {
         width: 70px;
         height: 70px;
-        box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 4px 0px var(--shadow-controls);
     }
 
     #reset-icon,
@@ -540,7 +538,7 @@ input:checked+.slider:before {
     .minits__pause-play {
         width: 80px;
         height: 80px;
-        box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 5px 0px var(--shadow-controls);
     }
 
     #play-icon,

@@ -9,6 +9,7 @@ export default class Settings {
 
     vars() {
         this.selectors = {
+            body: "body",
             settingsSVG: "settings-icon",
             closeSVG: "close-icon",
             settingsBtn: ".minits__settings",
@@ -18,9 +19,11 @@ export default class Settings {
             minitsTime: ".minits__time",
             timerType: ".minits--nav-btn",
             timerInput: ".minits__settings-timer-input",
-            toggles: "data-toggle"
+            toggles: "data-toggle",
+            notiToggle: "notifications"
         }
 
+        this.body = document.querySelector(`${this.selectors.body}`);
         this.settingsBtn = document.querySelector(`${this.selectors.settingsBtn}`);
         this.settingsPopup = document.querySelector(`${this.selectors.settingsPopup}`);
         this.navBtns = document.querySelectorAll(`${this.selectors.settingsNavBtns}`);
@@ -29,6 +32,7 @@ export default class Settings {
         this.timerType = document.querySelectorAll(`${this.selectors.timerType}`);
         this.timerInput = document.querySelectorAll(`${this.selectors.timerInput}`);
         this.toggles = document.querySelectorAll(`[${this.selectors.toggles}]`);
+        this.notiToggle = document.getElementById(`${this.selectors.notiToggle}`);
 
         this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
         this.closeSVG = document.getElementById(`${this.selectors.closeSVG}`);
@@ -71,20 +75,21 @@ export default class Settings {
             })
         })
 
+        this.storedData = this.savedSettings || this.appState;
+
         this.getState();
         this.handleTimerInput();
         this.handleToggles();
     }
 
     getState() {
-        let storedData = this.savedSettings || this.appState;
 
         this.timerInput.forEach((input, i) => {
-            input.value = storedData[`${input.dataset.timerType}`];
+            input.value = this.storedData[`${input.dataset.timerType}`];
         })
 
         this.toggles.forEach(toggle => {
-            toggle.checked = storedData[`${toggle.dataset.toggle}`];
+            toggle.checked = this.storedData[`${toggle.dataset.toggle}`];
             if (toggle.checked) this.toggledSetting(toggle.dataset.toggle);
         })
 
@@ -117,9 +122,10 @@ export default class Settings {
 
             toggle.addEventListener("change", () => {
                 if (toggle.checked) this.toggledSetting(toggle.dataset.toggle);
-                this.savedSettings[`${toggle.dataset.toggle}`] = toggle.checked;
+                console.log(this.storedData);
+                this.storedData[`${toggle.dataset.toggle}`] = this.checked;
 
-                localStorage.setItem("appState", JSON.stringify(this.savedSettings));
+                localStorage.setItem("appState", JSON.stringify(this.storedData));
             })
 
         })
@@ -165,7 +171,8 @@ export default class Settings {
     }
 
     enableDarkMode() {
-        console.log("darkydark");
+        const strg = JSON.parse(localStorage.getItem("appState"));
+        console.log(strg["darkMode"]);
     }
 
     enableTimerInTitle() {
@@ -177,21 +184,20 @@ export default class Settings {
     }
 
     askNotificationPermission() {
-        console.log(Notification.permission);
-
         if (Notification.permission === "denied") {
-            alert("bruhh come on");
+            this.notiToggle.checked = false;
+            localStorage.setItem("appState", JSON.stringify(this.savedSettings));
         }
 
-        if (Notification.permission !== "granted") {
-
+        if (Notification.permission === "default") {
             Notification.requestPermission().then((result) => this.handleNotificationPermission());
         }
     }
 
     handleNotificationPermission() {
         if (Notification.permission === "default" || Notification.permission === "denied") {
-            console.log("oh no");
+            this.notiToggle.checked = false;
+            localStorage.setItem("appState", JSON.stringify(this.savedSettings));
         }
     }
 
