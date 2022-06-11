@@ -15,6 +15,7 @@ export default class Timer {
             shortBreakBtn: ".minits__short-break",
             longBreakBtn: ".minits__long-break",
             minitsTime: ".minits__time",
+            title: "title",
             timerControl: ".minits__pause-play",
             resetControl: ".minits__reset",
             timerInputs: ".minits__settings-timer-input",
@@ -30,6 +31,7 @@ export default class Timer {
         this.longBreak = document.querySelector(`${this.selectors.longBreakBtn}`);
         this.navBtns = document.querySelectorAll(`${this.selectors.navBtns}`);
         this.minitsTime = document.querySelector(`${this.selectors.minitsTime}`);
+        this.title = document.querySelector(`${this.selectors.title}`);
         this.timerControl = document.querySelector(`${this.selectors.timerControl}`);
         this.resetControl = document.querySelector(`${this.selectors.resetControl}`);
         this.timerInputs = document.querySelector(`${this.selectors.timerInputs}`);
@@ -139,6 +141,7 @@ export default class Timer {
             else if (this.minitsTime.classList.contains(this.selectors.utilTimerRunning)) {
                 let secondsLeft = Math.round((endTime - Date.now()) / 1000);
                 setTime(secondsLeft, this.minitsTime);
+                setTime(secondsLeft, this.title, true);
                 this.minitsTime.dataset.secondsLeft = secondsLeft;
             }
             else {

@@ -19,6 +19,7 @@ export default class Settings {
             minitsTime: ".minits__time",
             timerType: ".minits--nav-btn",
             timerInput: ".minits__settings-timer-input",
+            colorInput: ".radio",
             toggles: "data-toggle",
             notiToggle: "notifications"
         }
@@ -32,6 +33,7 @@ export default class Settings {
         this.timerType = document.querySelectorAll(`${this.selectors.timerType}`);
         this.timerInput = document.querySelectorAll(`${this.selectors.timerInput}`);
         this.toggles = document.querySelectorAll(`[${this.selectors.toggles}]`);
+        this.colorPalette = document.querySelectorAll(`${this.selectors.colorInput}`);
         this.notiToggle = document.getElementById(`${this.selectors.notiToggle}`);
 
         this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
@@ -47,6 +49,7 @@ export default class Settings {
             "darkMode": false,
             "timerInTitle": true,
             "nowPlaying": true,
+            "color": 4
         }
 
         this.savedSettings = JSON.parse(localStorage.getItem("appState")) || localStorage.setItem("appState", JSON.stringify(this.appState));
@@ -80,19 +83,27 @@ export default class Settings {
         this.getState();
         this.handleTimerInput();
         this.handleToggles();
+        this.handleColorPalette();
     }
 
     getState() {
-
         this.timerInput.forEach((input, i) => {
             input.value = this.storedData[`${input.dataset.timerType}`];
         })
 
         this.toggles.forEach(toggle => {
             toggle.checked = this.storedData[`${toggle.dataset.toggle}`];
-            if (toggle.checked) this.toggledSetting(toggle.dataset.toggle);
+
+            if (toggle.checked) this.enableSetting(toggle.dataset.toggle);
+            else this.disableSetting(toggle.dataset.toggle);
         })
 
+        this.colorPalette.forEach((palette, i) => {
+            if (i == this.storedData[`${palette.dataset.radio}`]) {
+                palette.checked = true;
+                this.body.style.setProperty("--app-accent", `var(--c${i})`)
+            }
+        })
     }
 
     handleTimerInput() {
@@ -102,9 +113,8 @@ export default class Settings {
                 let forTimerType = document.querySelector(`button[data-timer-type="${input.dataset.timerType}"]`);
 
                 forTimerType.dataset.time = input.value;
-                this.savedSettings[`${forTimerType.dataset.timerType}`] = input.value;
-
-                localStorage.setItem("appState", JSON.stringify(this.savedSettings));
+                this.storedData[`${forTimerType.dataset.timerType}`] = input.value;
+                localStorage.setItem("appState", JSON.stringify(this.storedData));
 
                 if (forTimerType.classList.contains("active")) {
                     this.minitsTime.dataset.secondsStart = forTimerType.dataset.time * 60;
@@ -121,17 +131,18 @@ export default class Settings {
         this.toggles.forEach(toggle => {
 
             toggle.addEventListener("change", () => {
-                if (toggle.checked) this.toggledSetting(toggle.dataset.toggle);
-                console.log(this.storedData);
-                this.storedData[`${toggle.dataset.toggle}`] = this.checked;
-
+                this.storedData[`${toggle.dataset.toggle}`] = toggle.checked;
                 localStorage.setItem("appState", JSON.stringify(this.storedData));
+
+                if (toggle.checked) this.enableSetting(toggle.dataset.toggle);
+                else this.disableSetting(toggle.dataset.toggle);
+
             })
 
         })
     }
 
-    toggledSetting(toggledOption) {
+    enableSetting(toggledOption) {
 
         switch (toggledOption) {
             case "autostartPomodoro":
@@ -157,6 +168,16 @@ export default class Settings {
         }
     }
 
+    disableSetting(toggledOption) {
+        switch (toggledOption) {
+            case "darkMode":
+                this.disableDarkMode();
+                break;
+            default:
+                return;
+        }
+    }
+
     enableAutostartPomodoro() {
         console.log("pompmo");
     }
@@ -171,8 +192,11 @@ export default class Settings {
     }
 
     enableDarkMode() {
-        const strg = JSON.parse(localStorage.getItem("appState"));
-        console.log(strg["darkMode"]);
+        this.body.dataset.theme = "dark";
+    }
+
+    disableDarkMode() {
+        this.body.dataset.theme = "light";
     }
 
     enableTimerInTitle() {
@@ -186,7 +210,9 @@ export default class Settings {
     askNotificationPermission() {
         if (Notification.permission === "denied") {
             this.notiToggle.checked = false;
-            localStorage.setItem("appState", JSON.stringify(this.savedSettings));
+            this.storedData[`${this.notiToggle.dataset.toggle}`] = false;
+            localStorage.setItem("appState", JSON.stringify(this.storedData));
+            console.log(this.storedData);
         }
 
         if (Notification.permission === "default") {
@@ -197,8 +223,21 @@ export default class Settings {
     handleNotificationPermission() {
         if (Notification.permission === "default" || Notification.permission === "denied") {
             this.notiToggle.checked = false;
-            localStorage.setItem("appState", JSON.stringify(this.savedSettings));
+            this.storedData[`${this.notiToggle.dataset.toggle}`] = false;
+            localStorage.setItem("appState", JSON.stringify(this.storedData));
+            console.log(this.storedData);
         }
+    }
+
+    handleColorPalette() {
+        this.colorPalette.forEach((palette, i) => {
+            palette.addEventListener("click", () => {
+                this.body.style.setProperty("--app-accent", `var(--c${i})`);
+
+                this.storedData[`${palette.dataset.radio}`] = i;
+                localStorage.setItem("appState", JSON.stringify(this.storedData));
+            })
+        })
     }
 
     removeExistingActiveClass() {

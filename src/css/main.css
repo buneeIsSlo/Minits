@@ -116,7 +116,7 @@ button {
     margin: 4rem auto;
     max-width: 290px;
     background-color: var(--bg-timer);
-    box-shadow: -8px 7px 0px hsla(242 100% 78%);
+    box-shadow: -8px 7px 0px var(--shadow-timer);
     border-radius: 20px;
 }
 
@@ -332,23 +332,23 @@ input:checked+.slider:before {
 }
 
 #clr0 {
-    background-color: var(--c0);
+    background-color: hsl(var(--c0));
 }
 
 #clr1 {
-    background-color: var(--c1);
+    background-color: hsl(var(--c1));
 }
 
 #clr2 {
-    background-color: var(--c2);
+    background-color: hsl(var(--c2));
 }
 
 #clr3 {
-    background-color: var(--c3);
+    background-color: hsl(var(--c3));
 }
 
 #clr4 {
-    background-color: var(--c4);
+    background-color: hsl(var(--c4));
 }
 
 .tex {

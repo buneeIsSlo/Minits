@@ -37,7 +37,20 @@
     --fs-100: .322rem;
 
     /* colors */
-    --bg-main: hsl(242 100% 78%);
+
+    /* --c0: hsl(243, 58%, 59%); */
+    --c0: 242, 100%, 78%;
+    --c1: 1, 100%, 68%;  
+    --c2: 127, 57%, 61%;
+    --c3: 203, 75%, 48%;
+    --c4: 37, 98%, 53%;
+
+}
+
+body[data-theme="light"] {
+    --app-accent: var(--c0);
+
+    --bg-main: hsl(var(--app-accent));
     --bg-nav-btn: hsl(0 0% 100%);
     --bg-timer: hsl(0 0% 100%);
     --bg-primary-control: hsl(0 0% 25%);
@@ -47,19 +60,11 @@
     --c-nav-btn-text: hsl(0 0% 8%);
     --c-timer-text: hsl(0 0% 8%);
 
+    --shadow-timer: hsl(0, 0%, 25%);
     --shadow-nav-btn: hsla(0, 0%, 0%, 0.3);
     --shadow-controls: hsla(0, 0%, 0%, 0.2);
 
-    --clr-purple: 242 100% 78%;
-    --clr-grey: 0 0% 25%;
-    --clr-black: 0 0% 8%;
-    --clr-white: 0 0% 100%;
-
-    --c0: #605ad3;
-    --c1: #ff5f5c;    
-    --c2: #63D471;
-    --c3: #1E91D6;
-    --c4: #FCA311;
+    --active-color: hsla(0, 0%, 100%, 0.9);
 }
 
 body[data-theme="dark"] {
@@ -73,9 +78,11 @@ body[data-theme="dark"] {
     --c-nav-btn-text: hsl(0 0% 100%);
     --c-timer-text: hsl(0 0% 100%);
 
-    --shadow-nav-btn: hsla(242, 100%, 78%, .7);
-    --shadow-controls: hsla(242, 100%, 78%, .6);
-    
+    --shadow-timer: hsl(var(--app-accent));
+    --shadow-nav-btn: hsla(var(--app-accent), .8);
+    --shadow-controls: hsla(var(--app-accent), .8);
+
+    --active-color: hsl(var(--app-accent));
 }
 
 /* ----- =============== ----- */
@@ -94,7 +101,7 @@ body[data-theme="dark"] {
 .active.active {
     background: transparent;
     color: hsla(0, 0%, 100%, 0.9);
-    color: hsl(242 100% 78%);
+    color: var(--active-color);
     box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.38), inset 2px 2px 2px rgba(64, 64, 64, 0.2);
     box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.236), inset 2px 2px 2px rgba(255, 255, 255, 0.236);
     pointer-events: none;
