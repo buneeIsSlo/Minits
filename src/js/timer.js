@@ -24,6 +24,7 @@ export default class Timer {
             utilActive: "active",
             utilHide: "hide",
             utilTimerRunning: "running",
+            timerInTitleToggle: "timerInTitle"
         }
 
         this.pomodoro = document.querySelector(`${this.selectors.pomodoroBtn}`);
@@ -37,6 +38,7 @@ export default class Timer {
         this.timerInputs = document.querySelector(`${this.selectors.timerInputs}`);
         this.playSVG = document.getElementById(`${this.selectors.playSVG}`);
         this.pauseSVG = document.getElementById(`${this.selectors.pauseSVG}`);
+        this.timerInTitleToggle = document.getElementById(`${this.selectors.timerInTitleToggle}`);
 
         if (!this.navBtns || !this.pomodoro || !this.minitsTime || !this.timerControl || !this.resetControl) return false;
         return true;
@@ -96,6 +98,7 @@ export default class Timer {
         this.switchSVG();
         this.minitsTime.classList.remove(this.selectors.utilTimerRunning);
         setTime(startTime, this.minitsTime);
+        this.title.innerHTML = "Minits";
         this.minitsTime.dataset.secondsLeft = startTime;
     }
 
@@ -141,7 +144,9 @@ export default class Timer {
             else if (this.minitsTime.classList.contains(this.selectors.utilTimerRunning)) {
                 let secondsLeft = Math.round((endTime - Date.now()) / 1000);
                 setTime(secondsLeft, this.minitsTime);
-                setTime(secondsLeft, this.title, true);
+                if (this.timerInTitleToggle.checked) {
+                    setTime(secondsLeft, this.title, true);
+                }
                 this.minitsTime.dataset.secondsLeft = secondsLeft;
             }
             else {

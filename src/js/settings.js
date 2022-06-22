@@ -10,6 +10,7 @@ export default class Settings {
     vars() {
         this.selectors = {
             body: "body",
+            title: "title",
             settingsSVG: "settings-icon",
             closeSVG: "close-icon",
             settingsBtn: ".minits__settings",
@@ -25,6 +26,7 @@ export default class Settings {
         }
 
         this.body = document.querySelector(`${this.selectors.body}`);
+        this.title = document.querySelector(`${this.selectors.title}`);
         this.settingsBtn = document.querySelector(`${this.selectors.settingsBtn}`);
         this.settingsPopup = document.querySelector(`${this.selectors.settingsPopup}`);
         this.navBtns = document.querySelectorAll(`${this.selectors.settingsNavBtns}`);
@@ -173,6 +175,9 @@ export default class Settings {
             case "darkMode":
                 this.disableDarkMode();
                 break;
+            case "timerInTitle":
+                this.disableTimerInTitle();
+                break;
             default:
                 return;
         }
@@ -201,6 +206,10 @@ export default class Settings {
 
     enableTimerInTitle() {
         console.log("timeytime");
+    }
+
+    disableTimerInTitle() {
+        this.title.innerHTML = "Minits";
     }
 
     enableNowPlaying() {
