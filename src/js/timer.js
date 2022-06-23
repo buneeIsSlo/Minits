@@ -126,20 +126,9 @@ export default class Timer {
                 clearInterval(countdown);
                 this.resetTime();
                 if (Notification.permission === "granted") {
-                    let img = "src/assest/images/close.svg";
-                    let text = "Move to the next timer.";
-
-                    new Notification("Time up!", { body: text, image: img });
+                    this.showNotification();
                 }
-
-                if (this.pomodoro.classList.contains(this.selectors.utilActive) &&
-                    JSON.parse(localStorage.getItem("appState"))["autostartBreak"] == true) {
-                    this.autoStartBreak();
-                }
-                else if (this.shortBreak.classList.contains(this.selectors.utilActive) &&
-                    JSON.parse(localStorage.getItem("appState"))["autostartPomodoro"] == true) {
-                    this.autoStartPomodoro();
-                }
+                this.autoStartTimers();
             }
             else if (this.minitsTime.classList.contains(this.selectors.utilTimerRunning)) {
                 let secondsLeft = Math.round((endTime - Date.now()) / 1000);
@@ -151,11 +140,29 @@ export default class Timer {
             }
             else {
                 this.switchSVG();
-                clearInterval(countdown);
+                this.clearInterval(countdown);
             }
 
         }, 1000);
 
+    }
+
+    showNotification() {
+        let img = "src/assest/images/close.svg";
+        let text = "Move to the next timer.";
+
+        new Notification("Time up!", { body: text, image: img });
+    }
+
+    autoStartTimers() {
+        if (this.pomodoro.classList.contains(this.selectors.utilActive) &&
+            JSON.parse(localStorage.getItem("appState"))["autostartBreak"] == true) {
+            this.autoStartBreak();
+        }
+        if (this.shortBreak.classList.contains(this.selectors.utilActive) &&
+            JSON.parse(localStorage.getItem("appState"))["autostartPomodoro"] == true) {
+            this.autoStartPomodoro();
+        }
     }
 
     autoStartBreak() {

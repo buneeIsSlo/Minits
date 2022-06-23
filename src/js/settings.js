@@ -147,15 +147,6 @@ export default class Settings {
     enableSetting(toggledOption) {
 
         switch (toggledOption) {
-            case "autostartPomodoro":
-                this.enableAutostartPomodoro();
-                break;
-            case "autostartBreak":
-                this.enableAutostartBreak();
-                break;
-            case "notifications":
-                this.enableNotifications();
-                break;
             case "darkMode":
                 this.enableDarkMode();
                 break;
@@ -163,10 +154,11 @@ export default class Settings {
                 this.enableTimerInTitle();
                 break;
             case "nowPlaying":
-                this.enableNowPlaying();
+                // this.enableNowPlaying();
                 break;
+
             default:
-                console.log("Invalid option");
+                return;
         }
     }
 
@@ -183,19 +175,6 @@ export default class Settings {
         }
     }
 
-    enableAutostartPomodoro() {
-        console.log("pompmo");
-    }
-
-    enableAutostartBreak() {
-        console.log("breakybreak");
-    }
-
-    enableNotifications() {
-        console.log("noti!!");
-        this.askNotificationPermission();
-    }
-
     enableDarkMode() {
         this.body.dataset.theme = "dark";
     }
@@ -210,10 +189,6 @@ export default class Settings {
 
     disableTimerInTitle() {
         this.title.innerHTML = "Minits";
-    }
-
-    enableNowPlaying() {
-        console.log("playiplay");
     }
 
     askNotificationPermission() {
