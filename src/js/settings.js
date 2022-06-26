@@ -1,4 +1,7 @@
 import { setTime } from "./common";
+import Toast from "./toast";
+
+let toast = new Toast();
 
 export default class Settings {
     constructor() {
@@ -40,6 +43,7 @@ export default class Settings {
 
         this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
         this.closeSVG = document.getElementById(`${this.selectors.closeSVG}`);
+
 
         this.appState = {
             "pomodoro": 25,
@@ -147,6 +151,9 @@ export default class Settings {
     enableSetting(toggledOption) {
 
         switch (toggledOption) {
+            case "notifications":
+                this.enableNotifications();
+                break;
             case "darkMode":
                 this.enableDarkMode();
                 break;
@@ -156,7 +163,6 @@ export default class Settings {
             case "nowPlaying":
                 // this.enableNowPlaying();
                 break;
-
             default:
                 return;
         }
@@ -173,6 +179,11 @@ export default class Settings {
             default:
                 return;
         }
+    }
+
+    enableNotifications() {
+        console.log("noti!!");
+        this.askNotificationPermission();
     }
 
     enableDarkMode() {
@@ -193,10 +204,11 @@ export default class Settings {
 
     askNotificationPermission() {
         if (Notification.permission === "denied") {
+            // alert("bruhh");
+            toast.show("toast to you mate!");
             this.notiToggle.checked = false;
             this.storedData[`${this.notiToggle.dataset.toggle}`] = false;
             localStorage.setItem("appState", JSON.stringify(this.storedData));
-            console.log(this.storedData);
         }
 
         if (Notification.permission === "default") {
@@ -209,7 +221,6 @@ export default class Settings {
             this.notiToggle.checked = false;
             this.storedData[`${this.notiToggle.dataset.toggle}`] = false;
             localStorage.setItem("appState", JSON.stringify(this.storedData));
-            console.log(this.storedData);
         }
     }
 

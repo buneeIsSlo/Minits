@@ -140,7 +140,7 @@ export default class Timer {
             }
             else {
                 this.switchSVG();
-                this.clearInterval(countdown);
+                clearInterval(countdown);
             }
 
         }, 1000);
