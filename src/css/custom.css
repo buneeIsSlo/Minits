@@ -65,6 +65,11 @@ body[data-theme="light"] {
     --shadow-controls: hsla(0, 0%, 0%, 0.2);
 
     --active-color: hsla(0, 0%, 100%, 0.9);
+
+    --toast-background: hsl(0, 0%, 100%);
+    --toast-border: hsl(0, 0%, 25%);
+    --toast-before: hsl(0, 0%, 25%);
+
 }
 
 body[data-theme="dark"] {
@@ -83,6 +88,10 @@ body[data-theme="dark"] {
     --shadow-controls: hsla(var(--app-accent), .8);
 
     --active-color: hsl(var(--app-accent));
+
+    --toast-background: hsl(0, 0%, 20%);
+    --toast-border: hsl(var(--app-accent));
+    --toast-before: hsl(var(--app-accent));
 }
 
 /* ----- =============== ----- */

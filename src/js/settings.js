@@ -205,7 +205,7 @@ export default class Settings {
     askNotificationPermission() {
         if (Notification.permission === "denied") {
             // alert("bruhh");
-            toast.show("toast to you mate!");
+            toast.show("⚡", "Please allow permission by clicking the info icon on the URL bar.");
             this.notiToggle.checked = false;
             this.storedData[`${this.notiToggle.dataset.toggle}`] = false;
             localStorage.setItem("appState", JSON.stringify(this.storedData));

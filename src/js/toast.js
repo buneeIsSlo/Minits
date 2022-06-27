@@ -1,3 +1,5 @@
+import { animationToastIn, animationToastOut, addAnimation } from "./animations";
+
 export default class Toast {
     constructor() {
         if (!this.vars()) return false;
@@ -5,6 +7,7 @@ export default class Toast {
     }
 
     vars() {
+        this.index = 0;
         return true;
     }
 
@@ -21,19 +24,50 @@ export default class Toast {
     }
 
     createToastElement() {
+        this.index += 1;
+
         this.toastElement = document.createElement("div");
         this.toastElement.className = "toast__item";
+        this.toastElement.setAttribute("data-toast", `${this.index}`);
         this.toastWrapper.appendChild(this.toastElement);
 
-        if (this.toastWrapper.childNodes.length > 2) {
+        let element = document.querySelector(`[data-toast="${this.index}"]`);
+        this.anim(element);
+
+        if (this.toastWrapper.childNodes.length > 1) {
             this.clear();
         }
     }
 
-    show(message) {
+    anim(element) {
+        console.log(element);
+
+        let toastIn = addAnimation(element, animationToastIn, {
+            duration: 500,
+            fill: "forwards"
+        });
+
+        setTimeout(() => {
+            toastIn.cancel();
+
+            let toastOut = addAnimation(element, animationToastOut, {
+                duration: 500,
+                fill: "forwards"
+            });
+
+            toastOut.onfinish = () => {
+                element.remove();
+            }
+
+            console.log(toastOut);
+        }, 2000);
+
+    }
+
+    show(icon, message) {
         this.createToastElement();
 
-        this.toastElement.innerHTML = message;
+        this.toastElement.innerHTML = `<span>${icon}</span><span>${message}</span>`;
     }
 
     clear() {
