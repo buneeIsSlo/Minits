@@ -1,4 +1,4 @@
-import { setTime } from "./common";
+import { setTime, icons } from "./common";
 import Toast from "./toast";
 
 let toast = new Toast();
@@ -205,7 +205,7 @@ export default class Settings {
     askNotificationPermission() {
         if (Notification.permission === "denied") {
             // alert("bruhh");
-            toast.show("⚡", "Please allow permission by clicking the info icon on the URL bar.");
+            toast.show(`${icons.info}`, "Info", "Please allow permission by clicking the info icon on the URL bar.");
             this.notiToggle.checked = false;
             this.storedData[`${this.notiToggle.dataset.toggle}`] = false;
             localStorage.setItem("appState", JSON.stringify(this.storedData));

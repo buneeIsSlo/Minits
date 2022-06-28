@@ -64,10 +64,14 @@ export default class Toast {
 
     }
 
-    show(icon, message) {
+    show(icon, state, message) {
         this.createToastElement();
-
-        this.toastElement.innerHTML = `<span>${icon}</span><span>${message}</span>`;
+        let content = `<span class="toast__icon--wrapper">${icon}</span>
+                       <div class="toast__content">
+                            <span class="toast__state">${state}</span>
+                            <span class="toast__message">${message}</span>
+                       </div>`;
+        this.toastElement.innerHTML = content;
     }
 
     clear() {

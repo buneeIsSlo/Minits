@@ -69,6 +69,11 @@ body[data-theme="light"] {
     --toast-background: hsl(0, 0%, 100%);
     --toast-border: hsl(0, 0%, 25%);
     --toast-before: hsl(0, 0%, 25%);
+    --toast-state: hsl(0, 0%, 0%);
+    --toast-mesasge: hsl(0, 0%, 37%);
+    --toast-icon-info: hsl(240, 100%, 50%);
+    --toast-icon-check: hsl(120, 100%, 50%);
+    --toast-icon-error: hsl(0, 100%, 50%);
 
 }
 
@@ -92,6 +97,12 @@ body[data-theme="dark"] {
     --toast-background: hsl(0, 0%, 20%);
     --toast-border: hsl(var(--app-accent));
     --toast-before: hsl(var(--app-accent));
+    --toast-state: hsl(0, 0%, 100%);
+    --toast-mesasge: hsl(0, 0%, 93%);
+    --toast-icon-info: hsl(240, 100%, 50%);
+    --toast-icon-check: hsl(120, 100%, 50%);
+    --toast-icon-error: hsl(0, 100%, 50%);
+
 }
 
 /* ----- =============== ----- */
