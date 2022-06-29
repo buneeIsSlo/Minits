@@ -196,6 +196,27 @@
                         <div class="child">
                             <div class="minits__settings-alarm-section">
                                 <p class="section--title">Alarm</p>
+                                <div class="minits__settings--center">
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label for="alarm">Alarm Volume</label>
+                                        <input id="alarm" type="range" min="0" max="100">
+                                    </div>
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label for="dropdown">Alarm Sound</label>
+                                        <div class="dropdown" id="dropdown" name="dropdown">
+                                            <div class="select">
+                                                <span class="selected">Sound2</span>
+                                                <div class="caret"></div>
+                                            </div>
+                                            <ul class="menu">
+                                                <li class="menu__option">Sound1</li>
+                                                <li class="menu__option menu__option--active">Sound2</li>
+                                                <li class="menu__option">Sound3</li>
+                                                <li class="menu__option">Sound4</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

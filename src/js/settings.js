@@ -25,6 +25,7 @@ export default class Settings {
             timerInput: ".minits__settings-timer-input",
             colorInput: ".radio",
             toggles: "data-toggle",
+            dropdowns: ".dropdown",
             notiToggle: "notifications"
         }
 
@@ -38,6 +39,7 @@ export default class Settings {
         this.timerType = document.querySelectorAll(`${this.selectors.timerType}`);
         this.timerInput = document.querySelectorAll(`${this.selectors.timerInput}`);
         this.toggles = document.querySelectorAll(`[${this.selectors.toggles}]`);
+        this.dropdowns = document.querySelectorAll(`${this.selectors.dropdowns}`);
         this.colorPalette = document.querySelectorAll(`${this.selectors.colorInput}`);
         this.notiToggle = document.getElementById(`${this.selectors.notiToggle}`);
 
@@ -90,6 +92,7 @@ export default class Settings {
         this.handleTimerInput();
         this.handleToggles();
         this.handleColorPalette();
+        this.handleDropdowns();
     }
 
     getState() {
@@ -145,6 +148,40 @@ export default class Settings {
 
             })
 
+        })
+    }
+
+    handleDropdowns() {
+
+        this.dropdowns.forEach(el => {
+
+            console.log("in loop");
+            const select = el.querySelector(".select");
+            const caret = el.querySelector(".caret");
+            const menu = el.querySelector(".menu");
+            const options = el.querySelectorAll(".menu__option");
+            const selected = el.querySelector(".selected");
+
+            select.addEventListener("click", () => {
+                console.log("drop!!!")
+
+                caret.classList.toggle("caret-rotate");
+
+                menu.classList.toggle("menu--open");
+            });
+
+            options.forEach(option => {
+                option.addEventListener("click", () => {
+                    selected.innerHTML = option.innerText;
+
+                    caret.classList.remove("caret-rotate");
+
+                    menu.classList.toggle("menu--open");
+
+                    options.forEach(op => op.classList.remove("menu__option--active"));
+                    option.classList.add("menu__option--active");
+                })
+            })
         })
     }
 
