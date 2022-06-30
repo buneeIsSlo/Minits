@@ -201,7 +201,7 @@
                                         <label for="alarm">Alarm Volume</label>
                                         <input id="alarm" type="range" min="0" max="100">
                                     </div>
-                                    <div class="minits__settings-controls--wrapper flex">
+                                    <div class="minits__settings-controls--column">
                                         <label for="dropdown">Alarm Sound</label>
                                         <div class="dropdown" id="dropdown" name="dropdown">
                                             <div class="select">
@@ -209,10 +209,21 @@
                                                 <div class="caret"></div>
                                             </div>
                                             <ul class="menu">
-                                                <li class="menu__option">Sound1</li>
-                                                <li class="menu__option menu__option--active">Sound2</li>
-                                                <li class="menu__option">Sound3</li>
-                                                <li class="menu__option">Sound4</li>
+                                                <li class="menu__option flex">
+                                                    <span class="menu__sound">Sound1</span>
+                                                    <button class="menu__sound-preview">&#128362;</button>
+                                                </li>
+                                                <li class="menu__option menu__option--active flex">
+                                                    <span class="menu__sound">Sound2</span>
+                                                    <button class="menu__sound-preview">&#128362;</button>
+                                                </li>
+                                                <li class="menu__option flex">
+                                                    <span class="menu__sound">Sound3</span>
+                                                    <button class="menu__sound-preview">&#128362;</button>
+                                                </li>
+                                                <!-- <li class="menu__option menu__option--active">Sound2</li>
+                                                    <li class="menu__option">Sound3</li>
+                                                    <li class="menu__option">Sound4</li> -->
                                             </ul>
                                         </div>
                                     </div>
@@ -221,7 +232,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </header>
         <main id="main" class="minits__timer-container">
             <nav class="minits__nav">

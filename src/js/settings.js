@@ -154,13 +154,12 @@ export default class Settings {
     handleDropdowns() {
 
         this.dropdowns.forEach(el => {
-
-            console.log("in loop");
             const select = el.querySelector(".select");
             const caret = el.querySelector(".caret");
             const menu = el.querySelector(".menu");
             const options = el.querySelectorAll(".menu__option");
             const selected = el.querySelector(".selected");
+            const soundPreview = el.querySelectorAll(".menu__sound-preview");
 
             select.addEventListener("click", () => {
                 console.log("drop!!!")
@@ -182,7 +181,15 @@ export default class Settings {
                     option.classList.add("menu__option--active");
                 })
             })
-        })
+
+            soundPreview.forEach(btn => {
+                btn.addEventListener("click", (event) => {
+                    console.log(btn);
+                    event.stopPropagation();
+                    console.log("play alarm");
+                })
+            })
+        });
     }
 
     enableSetting(toggledOption) {
