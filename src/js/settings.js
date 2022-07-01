@@ -159,6 +159,7 @@ export default class Settings {
             const menu = el.querySelector(".menu");
             const options = el.querySelectorAll(".menu__option");
             const selected = el.querySelector(".selected");
+            const menuSound = el.querySelectorAll(".menu__sound");
             const soundPreview = el.querySelectorAll(".menu__sound-preview");
 
             select.addEventListener("click", () => {
@@ -169,9 +170,9 @@ export default class Settings {
                 menu.classList.toggle("menu--open");
             });
 
-            options.forEach(option => {
+            options.forEach((option, i) => {
                 option.addEventListener("click", () => {
-                    selected.innerHTML = option.innerText;
+                    selected.innerHTML = menuSound[i].innerText;
 
                     caret.classList.remove("caret-rotate");
 

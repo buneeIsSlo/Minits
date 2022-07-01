@@ -192,7 +192,7 @@ body[data-theme="dark"] {
 .dropdown {
     position: relative;
     width: 80%;
-    margin: 0 auto;
+    margin: .7rem auto;
 }
 
 .select {
@@ -214,7 +214,7 @@ body[data-theme="dark"] {
 }
 
 .caret-rotate {
-    transform: rotate(180deg) !important;
+    transform: rotate(180deg);
 }
 
 .menu {
