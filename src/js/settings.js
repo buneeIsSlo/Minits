@@ -26,6 +26,7 @@ export default class Settings {
             colorInput: ".radio",
             toggles: "data-toggle",
             dropdowns: ".dropdown",
+            utilMenuActiveOption: "menu__option--active",
             notiToggle: "notifications"
         }
 
@@ -43,9 +44,10 @@ export default class Settings {
         this.colorPalette = document.querySelectorAll(`${this.selectors.colorInput}`);
         this.notiToggle = document.getElementById(`${this.selectors.notiToggle}`);
 
+        this.menuActiveOptionClass = this.selectors.utilMenuActiveOption;
+
         this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
         this.closeSVG = document.getElementById(`${this.selectors.closeSVG}`);
-
 
         this.appState = {
             "pomodoro": 25,
@@ -57,7 +59,8 @@ export default class Settings {
             "darkMode": false,
             "timerInTitle": true,
             "nowPlaying": true,
-            "color": 4
+            "color": 4,
+            "alarmSound": 1,
         }
 
         this.savedSettings = JSON.parse(localStorage.getItem("appState")) || localStorage.setItem("appState", JSON.stringify(this.appState));
@@ -113,6 +116,17 @@ export default class Settings {
                 this.body.style.setProperty("--app-accent", `var(--c${i})`)
             }
         })
+
+        this.dropdowns.forEach((el) => {
+            const select = el.querySelector(".selected");
+            const options = el.querySelectorAll(".menu__option");
+            const menuSoundName = el.querySelectorAll(".menu__sound-name");
+
+            const selectedIndex = this.storedData[el.dataset.sound];
+
+            options[selectedIndex].classList.add(this.menuActiveOptionClass);
+            select.innerText = menuSoundName[selectedIndex].innerText;
+        })
     }
 
     handleTimerInput() {
@@ -159,12 +173,10 @@ export default class Settings {
             const menu = el.querySelector(".menu");
             const options = el.querySelectorAll(".menu__option");
             const selected = el.querySelector(".selected");
-            const menuSound = el.querySelectorAll(".menu__sound");
+            const menuSoundName = el.querySelectorAll(".menu__sound-name");
             const soundPreview = el.querySelectorAll(".menu__sound-preview");
 
             select.addEventListener("click", () => {
-                console.log("drop!!!")
-
                 caret.classList.toggle("caret-rotate");
 
                 menu.classList.toggle("menu--open");
@@ -172,20 +184,22 @@ export default class Settings {
 
             options.forEach((option, i) => {
                 option.addEventListener("click", () => {
-                    selected.innerHTML = menuSound[i].innerText;
+                    selected.innerText = menuSoundName[i].innerText;
 
                     caret.classList.remove("caret-rotate");
 
                     menu.classList.toggle("menu--open");
 
-                    options.forEach(op => op.classList.remove("menu__option--active"));
-                    option.classList.add("menu__option--active");
+                    options.forEach(op => op.classList.remove(this.menuActiveOptionClass));
+                    option.classList.add(this.menuActiveOptionClass);
+
+                    this.storedData[el.dataset.sound] = i;
+                    localStorage.setItem("appState", JSON.stringify(this.storedData));
                 })
             })
 
             soundPreview.forEach(btn => {
                 btn.addEventListener("click", (event) => {
-                    console.log(btn);
                     event.stopPropagation();
                     console.log("play alarm");
                 })
