@@ -3,6 +3,8 @@ import "../css/custom.css";
 import "../css/toast.css";
 import "../css/main.css";
 
+import "../assets/audios/ticking-slow.mp3";
+
 import Settings from "./settings.js"
 import Timer from "./timer.js"
 

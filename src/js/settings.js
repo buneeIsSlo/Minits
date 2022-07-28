@@ -1,5 +1,6 @@
 import { setTime, icons } from "./common";
 import Toast from "./toast";
+import { music } from "./audio"
 
 let toast = new Toast();
 
@@ -91,11 +92,14 @@ export default class Settings {
 
         this.storedData = this.savedSettings || this.appState;
 
-        this.getState();
-        this.handleTimerInput();
-        this.handleToggles();
-        this.handleColorPalette();
-        this.handleDropdowns();
+        window.addEventListener("load", () => {
+            this.getState();
+            this.handleTimerInput();
+            this.handleToggles();
+            this.handleColorPalette();
+            this.handleDropdowns();
+        });
+
     }
 
     getState() {
@@ -201,7 +205,7 @@ export default class Settings {
             soundPreview.forEach(btn => {
                 btn.addEventListener("click", (event) => {
                     event.stopPropagation();
-                    console.log("play alarm");
+                    music(btn.dataset.snd);
                 })
             })
         });

@@ -10,8 +10,8 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, "docs"),
-        filename: "[js]/[name].bundle.js",
-        assetModuleFilename: "imgs/[name][ext]",
+        filename: "[js]/[name].[contenthash].bundle.js",
+        assetModuleFilename: "[name][contenthash][ext]",
         clean: true,
     },
 
@@ -30,7 +30,7 @@ module.exports = {
             },
 
             {
-                test: /\.(svg|ico|webp|png|jpg|jpeg|gif)$/,
+                test: /\.(svg|ico|webp|png|jpg|jpeg|gif|mp3|wav)$/,
                 type: "asset/resource"
             },
 

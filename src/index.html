@@ -9,6 +9,7 @@
 </head>
 
 <body class="minits" data-theme="light">
+    <!-- <img src="./assets/images/question.svg" style="width: 50px; height: 50px;" alt="testing"> -->
     <div class="minits__container flex">
         <header class="minits__header flex">
             <h1 class="minits__logo">Minits </h1>
@@ -208,11 +209,14 @@
                                             <ul class="menu">
                                                 <li class="menu__option flex">
                                                     <span class="menu__sound-name">Sound1</span>
-                                                    <button class="menu__sound-preview">&#128362;</button>
+                                                    <button class="menu__sound-preview" data-snd="a1">&#128362;</button>
                                                 </li>
                                                 <li class="menu__option flex">
                                                     <span class="menu__sound-name">Sound2</span>
-                                                    <button class="menu__sound-preview">&#128362;</button>
+                                                    <audio id="a2" crossOrigin="anonymous">
+                                                        <source src="assets/audios/ticking-slow.mp3">
+                                                    </audio>
+                                                    <button class="menu__sound-preview" data-snd="a2">&#128362;</button>
                                                 </li>
                                                 <li class="menu__option flex">
                                                     <span class="menu__sound-name">Sound3</span>
