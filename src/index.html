@@ -203,10 +203,12 @@
                                         <label for="dropdown">Alarm Sound</label>
                                         <div class="dropdown" id="dropdown" name="dropdown" data-sound="alarmSound">
                                             <div class="select">
-                                                <span class="selected">Sound2</span>
+                                                <audio id="alarm">No audio</audio>
+                                                <span class="selected" data-selected-alarm="2">Sound2</span>
                                                 <div class="caret"></div>
                                             </div>
                                             <ul class="menu">
+                                                <audio id="previewAlarm">No audio bruhh</audio>
                                                 <li class="menu__option flex">
                                                     <span class="menu__sound-name">Sound1</span>
                                                     <button class="menu__sound-preview" data-snd="a1">&#128362;</button>

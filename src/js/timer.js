@@ -1,4 +1,5 @@
 import { setTime } from "./common";
+import { playAlarm } from "./audio";
 
 export default class Timer {
 
@@ -124,6 +125,7 @@ export default class Timer {
         const countdown = setInterval(() => {
             if (this.minitsTime.dataset.secondsLeft == 55) {
                 clearInterval(countdown);
+                playAlarm();
                 this.resetTime();
                 if (Notification.permission === "granted") {
                     this.showNotification();

@@ -1,10 +1,18 @@
-export const music = (elementClass) => {
-    let audioElement = document.getElementById(elementClass);
-    console.log(audioElement);
+export const playAlarm = () => {
+    let audioElement = document.getElementById("alarm");
 
     audioElement.play();
 
-    setTimeout(() => {
-        audioElement.pause();
-    }, 1000);
+    // setTimeout(() => {
+    //     audioElement.pause();
+    // }, 2000);
+}
+export const previewAlarm = () => {
+    let audioElement = document.getElementById("previewAlarm");
+
+    audioElement.play();
+
+    // setTimeout(() => {
+    //     audioElement.pause();
+    // }, 2000);
 }

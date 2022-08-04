@@ -1,6 +1,12 @@
 import { setTime, icons } from "./common";
 import Toast from "./toast";
-import { music } from "./audio"
+import { previewAlarm } from "./audio"
+
+import bell from "../assets/audios/alarm-bell.mp3";
+import bird from "../assets/audios/alarm-bird.mp3";
+import digital from "../assets/audios/alarm-digital.mp3";
+
+const allAlarmSounds = [bell, bird, digital];
 
 let toast = new Toast();
 
@@ -28,7 +34,9 @@ export default class Settings {
             toggles: "data-toggle",
             dropdowns: ".dropdown",
             utilMenuActiveOption: "menu__option--active",
-            notiToggle: "notifications"
+            notiToggle: "notifications",
+            alarmAudio: "alarm",
+            previewAlarmAudio: "previewAlarm"
         }
 
         this.body = document.querySelector(`${this.selectors.body}`);
@@ -44,6 +52,8 @@ export default class Settings {
         this.dropdowns = document.querySelectorAll(`${this.selectors.dropdowns}`);
         this.colorPalette = document.querySelectorAll(`${this.selectors.colorInput}`);
         this.notiToggle = document.getElementById(`${this.selectors.notiToggle}`);
+        this.alarmAudio = document.getElementById(`${this.selectors.alarmAudio}`);
+        this.previewAlarmAudio = document.getElementById(`${this.selectors.previewAlarmAudio}`);
 
         this.menuActiveOptionClass = this.selectors.utilMenuActiveOption;
 
@@ -62,6 +72,7 @@ export default class Settings {
             "nowPlaying": true,
             "color": 4,
             "alarmSound": 1,
+            "selctedAlarm": 2
         }
 
         this.savedSettings = JSON.parse(localStorage.getItem("appState")) || localStorage.setItem("appState", JSON.stringify(this.appState));
@@ -130,6 +141,8 @@ export default class Settings {
 
             options[selectedIndex].classList.add(this.menuActiveOptionClass);
             select.innerText = menuSoundName[selectedIndex].innerText;
+
+            this.alarmAudio.src = allAlarmSounds[selectedIndex];
         })
     }
 
@@ -189,6 +202,8 @@ export default class Settings {
             options.forEach((option, i) => {
                 option.addEventListener("click", () => {
                     selected.innerText = menuSoundName[i].innerText;
+                    selected.dataset.selectedAlarm = i;
+                    this.alarmAudio.src = allAlarmSounds[i];
 
                     caret.classList.remove("caret-rotate");
 
@@ -202,10 +217,12 @@ export default class Settings {
                 })
             })
 
-            soundPreview.forEach(btn => {
+            soundPreview.forEach((btn, i) => {
                 btn.addEventListener("click", (event) => {
                     event.stopPropagation();
-                    music(btn.dataset.snd);
+
+                    this.previewAlarmAudio.src = allAlarmSounds[i];
+                    previewAlarm();
                 })
             })
         });
