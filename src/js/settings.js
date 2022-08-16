@@ -36,7 +36,9 @@ export default class Settings {
             utilMenuActiveOption: "menu__option--active",
             notiToggle: "notifications",
             alarmAudio: "alarm",
-            previewAlarmAudio: "previewAlarm"
+            previewAlarmAudio: "previewAlarm",
+            alarmVolume: "alarmVolume",
+            volumeBubble: ".menu--volume-value"
         }
 
         this.body = document.querySelector(`${this.selectors.body}`);
@@ -54,6 +56,8 @@ export default class Settings {
         this.notiToggle = document.getElementById(`${this.selectors.notiToggle}`);
         this.alarmAudio = document.getElementById(`${this.selectors.alarmAudio}`);
         this.previewAlarmAudio = document.getElementById(`${this.selectors.previewAlarmAudio}`);
+        this.alarmVolume = document.getElementById(`${this.selectors.alarmVolume}`);
+        this.volumeBubble = document.querySelector(`${this.selectors.volumeBubble}`);
 
         this.menuActiveOptionClass = this.selectors.utilMenuActiveOption;
 
@@ -72,7 +76,8 @@ export default class Settings {
             "nowPlaying": true,
             "color": 4,
             "alarmSound": 1,
-            "selctedAlarm": 2
+            "selctedAlarm": 2,
+            "alarmVolAt": 50,
         }
 
         this.savedSettings = JSON.parse(localStorage.getItem("appState")) || localStorage.setItem("appState", JSON.stringify(this.appState));
@@ -109,6 +114,7 @@ export default class Settings {
             this.handleToggles();
             this.handleColorPalette();
             this.handleDropdowns();
+            this.handleRangeSliders();
         });
 
     }
@@ -144,6 +150,10 @@ export default class Settings {
 
             this.alarmAudio.src = allAlarmSounds[selectedIndex];
         })
+
+        this.alarmVolume.value = this.storedData["alarmVolAt"];
+        this.slideProgressTo(this.alarmVolume.value);
+        this.updateVolumeBubble();
     }
 
     handleTimerInput() {
@@ -226,6 +236,22 @@ export default class Settings {
                 })
             })
         });
+    }
+
+    handleRangeSliders() {
+        this.alarmVolume.addEventListener("input", () => {
+            this.slideProgressTo(this.alarmVolume.value);
+
+            let vol = this.alarmVolume.value / 100;
+            this.previewAlarmAudio.volume = vol;
+            this.alarmAudio.volume = vol;
+
+            this.updateVolumeBubble();
+
+            this.storedData["alarmVolAt"] = this.alarmVolume.value;
+            localStorage.setItem("appState", JSON.stringify(this.storedData));
+        });
+
     }
 
     enableSetting(toggledOption) {
@@ -313,6 +339,22 @@ export default class Settings {
                 localStorage.setItem("appState", JSON.stringify(this.storedData));
             })
         })
+    }
+
+    updateVolumeBubble() {
+        this.volumeBubble.classList.add("show");
+
+        this.alarmVolume.addEventListener("blur", () => {
+            this.volumeBubble.classList.remove("show");
+        })
+    }
+
+    slideProgressTo(val) {
+        const progress = document.querySelector(".menu--volume-progress");
+
+        progress.style.width = `${val}%`;
+        this.volumeBubble.innerHTML = val;
+        this.volumeBubble.style.left = `${val}%`;
     }
 
     removeExistingActiveClass() {

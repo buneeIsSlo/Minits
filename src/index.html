@@ -228,8 +228,13 @@
                                         </div>
                                     </div>
                                     <div class="minits__settings-controls--wrapper flex">
-                                        <label for="alarm">Alarm Volume</label>
-                                        <input id="alarm" type="range" min="0" max="100">
+                                        <label for="alarmVolume">Alarm Volume</label>
+                                        <div class="menu--volume-field flex">
+                                            <span class="menu--volume-value">50</span>
+                                            <input class="menu--volume-range" id="alarmVolume" type="range" min="0"
+                                                max="100" value="0" data-alarmVolAt="50">
+                                            <div class="menu--volume-progress"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
