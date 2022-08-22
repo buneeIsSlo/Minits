@@ -208,16 +208,13 @@
                                                 <div class="caret"></div>
                                             </div>
                                             <ul class="menu">
-                                                <audio id="previewAlarm">No audio bruhh</audio>
+                                                <audio id="previewAlarm">No audio</audio>
                                                 <li class="menu__option flex">
                                                     <span class="menu__sound-name">Sound1</span>
                                                     <button class="menu__sound-preview" data-snd="a1">&#128362;</button>
                                                 </li>
                                                 <li class="menu__option flex">
                                                     <span class="menu__sound-name">Sound2</span>
-                                                    <audio id="a2" crossOrigin="anonymous">
-                                                        <source src="assets/audios/ticking-slow.mp3">
-                                                    </audio>
                                                     <button class="menu__sound-preview" data-snd="a2">&#128362;</button>
                                                 </li>
                                                 <li class="menu__option flex">
@@ -229,11 +226,11 @@
                                     </div>
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label for="alarmVolume">Alarm Volume</label>
-                                        <div class="menu--volume-field flex">
-                                            <span class="menu--volume-value">50</span>
-                                            <input class="menu--volume-range" id="alarmVolume" type="range" min="0"
-                                                max="100" value="0" data-alarmVolAt="50">
-                                            <div class="menu--volume-progress"></div>
+                                        <div class="volume flex">
+                                            <span class="volume__value">50</span>
+                                            <input class="volume__range" id="alarmVolume" type="range" min="0" max="100"
+                                                value="0" data-alarmVolAt="50">
+                                            <div class="volume__progress"></div>
                                         </div>
                                     </div>
                                 </div>

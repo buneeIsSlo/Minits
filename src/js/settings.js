@@ -38,7 +38,7 @@ export default class Settings {
             alarmAudio: "alarm",
             previewAlarmAudio: "previewAlarm",
             alarmVolume: "alarmVolume",
-            volumeBubble: ".menu--volume-value"
+            volumeBubble: ".volume__value"
         }
 
         this.body = document.querySelector(`${this.selectors.body}`);
@@ -310,7 +310,6 @@ export default class Settings {
 
     askNotificationPermission() {
         if (Notification.permission === "denied") {
-            // alert("bruhh");
             toast.show(`${icons.info}`, "Info", "Please allow permission by clicking the info icon on the URL bar.");
             this.notiToggle.checked = false;
             this.storedData[`${this.notiToggle.dataset.toggle}`] = false;
@@ -350,7 +349,7 @@ export default class Settings {
     }
 
     slideProgressTo(val) {
-        const progress = document.querySelector(".menu--volume-progress");
+        const progress = document.querySelector(".volume__progress");
 
         progress.style.width = `${val}%`;
         this.volumeBubble.innerHTML = val;

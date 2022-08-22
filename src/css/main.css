@@ -228,10 +228,6 @@ button {
    border-radius: 3px;
 }
 
-.minits__settings-sound {
-    background-color: #c0c0c0;
-}
-
 .minits__settings-type {
     padding: .5em;
     display: block;
