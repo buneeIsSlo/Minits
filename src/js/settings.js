@@ -138,15 +138,15 @@ export default class Settings {
             }
         })
 
-        this.dropdowns.forEach((el) => {
-            const select = el.querySelector(".selected");
-            const options = el.querySelectorAll(".menu__option");
-            const menuSoundName = el.querySelectorAll(".menu__sound-name");
+        this.dropdowns.forEach((dropdown) => {
+            const selectedOption = dropdown.querySelector(".select__selected");
+            const options = dropdown.querySelectorAll(".menu__option");
+            const menuSoundName = dropdown.querySelectorAll(".menu__sound-name");
 
-            const selectedIndex = this.storedData[el.dataset.sound];
+            const selectedIndex = this.storedData[dropdown.dataset.sound];
 
             options[selectedIndex].classList.add(this.menuActiveOptionClass);
-            select.innerText = menuSoundName[selectedIndex].innerText;
+            selectedOption.innerText = menuSoundName[selectedIndex].innerText;
 
             this.alarmAudio.src = allAlarmSounds[selectedIndex];
         })
@@ -194,44 +194,45 @@ export default class Settings {
 
     handleDropdowns() {
 
-        this.dropdowns.forEach(el => {
-            const select = el.querySelector(".select");
-            const caret = el.querySelector(".caret");
-            const menu = el.querySelector(".menu");
-            const options = el.querySelectorAll(".menu__option");
-            const selected = el.querySelector(".selected");
-            const menuSoundName = el.querySelectorAll(".menu__sound-name");
-            const soundPreview = el.querySelectorAll(".menu__sound-preview");
+        this.dropdowns.forEach(dropdown => {
+            const selectField = dropdown.querySelector(".select");
+            const caretIcon = dropdown.querySelector(".select__caret");
+            const menu = dropdown.querySelector(".menu");
+            const options = dropdown.querySelectorAll(".menu__option");
+            const selectedOption = dropdown.querySelector(".select__selected");
+            const menuSoundName = dropdown.querySelectorAll(".menu__sound-name");
+            const soundPreview = dropdown.querySelectorAll(".menu__sound-preview");
+            const utilMenuOpen = "menu--open";
 
-            select.addEventListener("click", () => {
-                caret.classList.toggle("caret-rotate");
+            selectField.addEventListener("click", () => {
+                caretIcon.classList.toggle("caret-rotate");
 
-                menu.classList.toggle("menu--open");
+                menu.classList.toggle(utilMenuOpen);
             });
 
-            options.forEach((option, i) => {
+            options.forEach((option, optIndex) => {
                 option.addEventListener("click", () => {
-                    selected.innerText = menuSoundName[i].innerText;
-                    selected.dataset.selectedAlarm = i;
-                    this.alarmAudio.src = allAlarmSounds[i];
+                    selectedOption.innerText = menuSoundName[optIndex].innerText;
+                    selectedOption.dataset.selectedAlarm = optIndex;
+                    this.alarmAudio.src = allAlarmSounds[optIndex];
 
-                    caret.classList.remove("caret-rotate");
+                    caretIcon.classList.remove("caret-rotate");
 
-                    menu.classList.toggle("menu--open");
+                    menu.classList.toggle(utilMenuOpen);
 
                     options.forEach(op => op.classList.remove(this.menuActiveOptionClass));
                     option.classList.add(this.menuActiveOptionClass);
 
-                    this.storedData[el.dataset.sound] = i;
+                    this.storedData[dropdown.dataset.sound] = optIndex;
                     localStorage.setItem("appState", JSON.stringify(this.storedData));
                 })
             })
 
-            soundPreview.forEach((btn, i) => {
+            soundPreview.forEach((btn, btnIndex) => {
                 btn.addEventListener("click", (event) => {
                     event.stopPropagation();
 
-                    this.previewAlarmAudio.src = allAlarmSounds[i];
+                    this.previewAlarmAudio.src = allAlarmSounds[btnIndex];
                     previewAlarm();
                 })
             })
