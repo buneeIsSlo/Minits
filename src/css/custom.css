@@ -37,8 +37,6 @@
     --fs-100: .322rem;
 
     /* colors */
-
-    /* --c0: hsl(243, 58%, 59%); */
     --c0: 242, 100%, 78%;
     --c1: 1, 100%, 68%;  
     --c2: 127, 57%, 61%;
@@ -104,6 +102,27 @@ body[data-theme="dark"] {
     --toast-icon-error: hsl(0, 100%, 50%);
 
 }
+
+.minits__settings-popup[data-accent="acc0"] {
+    --accent: hsl(243, 58%, 59%);
+}
+
+.minits__settings-popup[data-accent="acc1"] {
+    --accent: hsl(2, 90%, 58%);
+}
+
+.minits__settings-popup[data-accent="acc2"] {
+    --accent: hsl(127, 51%, 47%);
+}
+
+.minits__settings-popup[data-accent="acc3"] {
+    --accent: hsl(203, 85%, 39%);
+}
+
+.minits__settings-popup[data-accent="acc4"] {
+    --accent: hsl(37, 100%, 50%);
+}
+
 
 /* ----- =============== ----- */
 /* ----- Utility classes ----- */
@@ -211,7 +230,7 @@ body[data-theme="dark"] {
     border-right: 5px solid transparent;
     border-left: 5px solid transparent;
     border-top: 8px solid #404040;
-    border-top: 8px solid hsl(243deg 58% 59%);
+    border-top: 8px solid var(--accent);
     transition: .3s transform cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -271,7 +290,7 @@ body[data-theme="dark"] {
 
 .menu__option--active,
 .menu__option--active:hover {
-    background-color: hsl(243deg 58% 59%);
+    background-color: var(--accent);
     color: #fff;
 }
 
@@ -322,7 +341,7 @@ body[data-theme="dark"] {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: hsl(243deg 58% 59%);
+    background: var(--accent);
 }
 
 .volume__range::-moz-range-thumb {
@@ -330,7 +349,7 @@ body[data-theme="dark"] {
     height: 16.5px;
     border: 0;
     border-radius: 100px;
-    background: hsl(243deg 58% 59%);
+    background: var(--accent);
 }
 
 .volume__progress {
@@ -339,7 +358,7 @@ body[data-theme="dark"] {
     left: 0;
     width: 5%;
     height: 2px;
-    background-color: hsl(243deg 58% 59%);
+    background-color: var(--accent);
 }
 
 .volume__value {
@@ -365,7 +384,7 @@ body[data-theme="dark"] {
     left: 50%;
     width: 35px;
     height: 35px;
-    background-color: hsl(243deg 58% 59%);
+    background-color: var(--accent);
     z-index: -1;
     transform: translateX(-50%) rotate(45deg);
     border-top-left-radius: 50%;

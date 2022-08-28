@@ -134,7 +134,8 @@ export default class Settings {
         this.colorPalette.forEach((palette, i) => {
             if (i == this.storedData[`${palette.dataset.radio}`]) {
                 palette.checked = true;
-                this.body.style.setProperty("--app-accent", `var(--c${i})`)
+                this.body.style.setProperty("--app-accent", `var(--c${i})`);
+                this.settingsPopup.dataset.accent = `acc${i}`;
             }
         })
 
@@ -334,6 +335,7 @@ export default class Settings {
         this.colorPalette.forEach((palette, i) => {
             palette.addEventListener("click", () => {
                 this.body.style.setProperty("--app-accent", `var(--c${i})`);
+                this.settingsPopup.dataset.accent = `acc${i}`;
 
                 this.storedData[`${palette.dataset.radio}`] = i;
                 localStorage.setItem("appState", JSON.stringify(this.storedData));
