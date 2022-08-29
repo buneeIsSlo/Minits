@@ -155,9 +155,9 @@ button {
     box-shadow: 0px 3px 0px var(--shadow-controls);
 }
 
-#reset-icon,
-#ambience_off-icon,
-#ambience_on-icon {
+#resetIcon,
+#ambienceOffIcon,
+#ambienceOnIcon {
     transform: scale(1);
 }
 
@@ -169,10 +169,20 @@ button {
     color: #fff;
 }
 
-#play-icon,
-#pause-icon {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(340deg) brightness(104%) contrast(102%);
+#playIcon,
+#pauseIcon {
     transform: scale(1.2);
+}
+
+#playIcon path,
+#pauseIcon path{
+    fill: var(--fill-icon-primary);
+}
+
+#resetIcon path,
+#ambienceOffIcon path,
+#ambienceOnIcon {
+    fill: var(--fill-icon-secondary);
 }
 
 .minits__settings-popup {
@@ -294,7 +304,7 @@ input[type=checkbox] {
 }
 
 input:checked+.slider {
-    background-color: hsl(243, 58%, 59%); 
+    background-color: var(--accent); 
 }
 
 input:checked+.slider:before {
@@ -461,9 +471,9 @@ input:checked+.slider:before {
         height: 60px;
     }
 
-    #reset-icon,
-    #ambience_off-icon,
-    #ambience_on-icon {
+    #resetIcon,
+    #ambienceOffIcon,
+    #ambienceOnIcon {
     transform: scale(1.1);
     }
 
@@ -472,8 +482,8 @@ input:checked+.slider:before {
         height: 70px;
     }
 
-    #play-icon,
-    #pause-icon {
+    #playIcon,
+    #pauseIcon {
     transform: scale(1.3);
     }
 
@@ -525,9 +535,9 @@ input:checked+.slider:before {
         box-shadow: 0px 4px 0px var(--shadow-controls);
     }
 
-    #reset-icon,
-    #ambience_off-icon,
-    #ambience_on-icon {
+    #resetIcon,
+    #ambienceOffIcon,
+    #ambienceOnIcon {
     transform: scale(1.3);
     }
 
@@ -537,8 +547,8 @@ input:checked+.slider:before {
         box-shadow: 0px 5px 0px var(--shadow-controls);
     }
 
-    #play-icon,
-    #pause-icon {
+    #playIcon,
+    #pauseIcon {
     transform: scale(1.5);
     }
 

@@ -54,6 +54,8 @@ body[data-theme="light"] {
     --bg-primary-control: hsl(0 0% 25%);
     --bg-secondary-controls: hsl(0 0% 100%);
 
+    --fill-icon-primary: #fff;
+    --fill-icon-secondary: #404040;
 
     --c-nav-btn-text: hsl(0 0% 8%);
     --c-timer-text: hsl(0 0% 8%);
@@ -82,6 +84,8 @@ body[data-theme="dark"] {
     --bg-primary-control: hsl(0 0% 100%);
     --bg-secondary-controls: hsl(0 0% 20%);
 
+    --fill-icon-primary: #404040;
+    --fill-icon-secondary: #fff;
 
     --c-nav-btn-text: hsl(0 0% 100%);
     --c-timer-text: hsl(0 0% 100%);
