@@ -228,8 +228,8 @@ button {
     cursor: pointer;
 }
 
-.minits__settings-nav-btn:hover {
-    filter: invert(38%) sepia(15%) saturate(3571%) hue-rotate(211deg) brightness(96%) contrast(95%); 
+.minits__settings-nav-btn:hover svg path {
+    fill: var(--accent);
 }
 
 .minits__settings-controls-wrapper {
@@ -253,7 +253,7 @@ button {
     height: 10px;
     display: inline-block;
     margin-right: .3em;
-    background-color:hsl(243deg 58% 59%);
+    background-color: var(--accent);
     border-radius: 50%;
 }
 
@@ -294,7 +294,7 @@ button {
 input[type=number] {
     width: 60px;
     padding: .5em;
-    border: 2px solid hsl(243deg 58% 59%);
+    border: 2px solid var(--accent);
     border-radius: 3px;
 }
 
@@ -357,13 +357,13 @@ input:checked+.slider:before {
     background-color: hsl(var(--c4));
 }
 
-.tex {
-    background-color: hsl(243deg 58% 59%);
+.minits__settings--tab-active {
+    background-color: var(--accent);
     pointer-events: none;
 }
 
-.tex svg {
-    filter: invert(100%) sepia(0%) saturate(7486%) hue-rotate(267deg) brightness(119%) contrast(104%);
+.minits__settings--tab-active svg path {
+    fill: #fff;
 }
 
 @keyframes translateIn {

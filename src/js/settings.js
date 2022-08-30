@@ -26,6 +26,7 @@ export default class Settings {
             settingsBtn: ".minits__settings",
             settingsPopup: ".minits__settings-popup",
             settingsNavBtns: ".minits__settings-nav-btn",
+            utilTabActive: "minits__settings--tab-active",
             settingsControls: ".minits__settings-controls-wrapper",
             minitsTime: ".minits__time",
             timerType: ".minits--nav-btn",
@@ -59,6 +60,7 @@ export default class Settings {
         this.alarmVolume = document.getElementById(`${this.selectors.alarmVolume}`);
         this.volumeBubble = document.querySelector(`${this.selectors.volumeBubble}`);
 
+        this.activeTabClass = this.selectors.utilTabActive;
         this.menuActiveOptionClass = this.selectors.utilMenuActiveOption;
 
         this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
@@ -96,7 +98,7 @@ export default class Settings {
         this.navBtns.forEach((btn, index) => {
             btn.addEventListener("click", () => {
                 this.removeExistingActiveClass();
-                btn.classList.add("tex");
+                btn.classList.add(this.activeTabClass);
 
                 this.settingsControls.forEach(controls => {
                     controls.classList.add("hide");
@@ -360,7 +362,7 @@ export default class Settings {
     }
 
     removeExistingActiveClass() {
-        this.navBtns.forEach(btn => btn.classList.remove("tex"));
+        this.navBtns.forEach(btn => btn.classList.remove(this.activeTabClass));
     }
 
 }
