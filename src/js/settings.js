@@ -27,6 +27,7 @@ export default class Settings {
             settingsPopup: ".minits__settings-popup",
             settingsNavBtns: ".minits__settings-nav-btn",
             utilTabActive: "minits__settings--tab-active",
+            utilHide: "hide",
             settingsControls: ".minits__settings-controls-wrapper",
             minitsTime: ".minits__time",
             timerType: ".minits--nav-btn",
@@ -62,6 +63,7 @@ export default class Settings {
 
         this.activeTabClass = this.selectors.utilTabActive;
         this.menuActiveOptionClass = this.selectors.utilMenuActiveOption;
+        this.hideClass = this.selectors.utilHide;
 
         this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
         this.closeSVG = document.getElementById(`${this.selectors.closeSVG}`);
@@ -90,9 +92,9 @@ export default class Settings {
     setUpEvents() {
 
         this.settingsBtn.addEventListener("click", () => {
-            this.settingsSVG.classList.toggle("hide");
-            this.closeSVG.classList.toggle("hide");
-            this.settingsPopup.classList.toggle("hide");
+            this.settingsSVG.classList.toggle(this.hideClass);
+            this.closeSVG.classList.toggle(this.hideClass);
+            this.settingsPopup.classList.toggle(this.hideClass);
         })
 
         this.navBtns.forEach((btn, index) => {
@@ -101,9 +103,9 @@ export default class Settings {
                 btn.classList.add(this.activeTabClass);
 
                 this.settingsControls.forEach(controls => {
-                    controls.classList.add("hide");
+                    controls.classList.add(this.hideClass);
                 })
-                this.settingsControls[index].classList.remove("hide");
+                this.settingsControls[index].classList.remove(this.hideClass);
 
             })
         })

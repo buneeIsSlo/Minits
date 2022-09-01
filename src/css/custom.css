@@ -192,24 +192,11 @@ body[data-theme="dark"] {
     border-radius: 50%;
 }
 
-.palette-color-wrapper {
-    position: relative;
-    width: 40px;
-    height: 40px;
-}
-
 .radio {
     position: absolute;
     width: 0;
     height: 0;
-}
-
-.palette-color {
-    position: absolute;
-    inset: 0;
-    background-color: rgb(255, 75, 75);
-    border-radius: 50px;
-    cursor: pointer;
+    opacity: 0;
 }
 
 .dropdown {
