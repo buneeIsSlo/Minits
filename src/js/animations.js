@@ -62,6 +62,6 @@ let toastOut = animations.toastOut;
 
 const addAnimation = (element, animation, options) => {
     return element.animate(animation, options);
-}
+};
 
 export { fadeIn as animationFadeIn, fadeOut as animationFadeOut, toastIn as animationToastIn, toastOut as animationToastOut, addAnimation };

@@ -57,7 +57,7 @@ export default class Toast {
 
             toastOut.onfinish = () => {
                 element.remove();
-            }
+            };
 
             console.log(toastOut);
         }, 2000);

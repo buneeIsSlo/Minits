@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "Minits pomodoro timer",
   "scripts": {
-    "dev": "webpack serve --open --config config/webpack.config.js"
+    "dev": "webpack serve --open --config config/webpack.config.js",
+    "lint": "eslint ./"
   },
   "keywords": [],
   "author": "bunee",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.7.1",
+    "eslint": "^8.23.0",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",

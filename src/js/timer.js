@@ -26,7 +26,7 @@ export default class Timer {
             utilHide: "hide",
             utilTimerRunning: "running",
             timerInTitleToggle: "timerInTitle"
-        }
+        };
 
         this.pomodoro = document.querySelector(`${this.selectors.pomodoroBtn}`);
         this.shortBreak = document.querySelector(`${this.selectors.shortBreakBtn}`);
@@ -57,8 +57,8 @@ export default class Timer {
         });
 
         this.resetControl.addEventListener("click", () => {
-            this.handleResetControl();
-        })
+            this.resetTime();
+        });
     }
 
     init() {
@@ -76,7 +76,7 @@ export default class Timer {
             btn.addEventListener("click", () => {
                 this.setActive(btn, btn.dataset.time);
                 this.minitsTime.classList.remove(this.selectors.utilTimerRunning);
-            })
+            });
         });
     }
 
@@ -89,18 +89,16 @@ export default class Timer {
         this.beginCountdown(this.minitsTime.dataset.secondsLeft);
     }
 
-    handleResetControl() {
-        this.resetTime();
-    }
-
     resetTime() {
         const startTime = this.minitsTime.dataset.secondsStart;
 
         this.switchSVG();
+
         this.minitsTime.classList.remove(this.selectors.utilTimerRunning);
         setTime(startTime, this.minitsTime);
-        this.title.innerHTML = "Minits";
         this.minitsTime.dataset.secondsLeft = startTime;
+
+        this.title.innerHTML = "Minits";
     }
 
     addActiveClass(element) {
@@ -175,7 +173,7 @@ export default class Timer {
             this.pauseSVG.classList.remove(this.selectors.utilHide);
             this.minitsTime.classList.toggle(this.selectors.utilTimerRunning);
             this.beginCountdown(this.minitsTime.dataset.secondsStart);
-        }, 1000)
+        }, 1000);
     }
 
     autoStartPomodoro() {
@@ -186,7 +184,7 @@ export default class Timer {
             this.pauseSVG.classList.remove(this.selectors.utilHide);
             this.minitsTime.classList.toggle(this.selectors.utilTimerRunning);
             this.beginCountdown(this.minitsTime.dataset.secondsStart);
-        }, 1000)
+        }, 1000);
     }
 
     setActive(timer, time) {
@@ -201,7 +199,7 @@ export default class Timer {
         this.navBtns.forEach(timer => {
             if (timer.classList.contains(this.selectors.utilActive))
                 return timer.dataset.timerType;
-        })
+        });
     }
 
     switchSVG() {

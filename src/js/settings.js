@@ -1,6 +1,6 @@
 import { setTime, icons } from "./common";
 import Toast from "./toast";
-import { previewAlarm } from "./audio"
+import { previewAlarm } from "./audio";
 
 import bell from "../assets/audios/alarm-bell.mp3";
 import bird from "../assets/audios/alarm-bird.mp3";
@@ -41,7 +41,7 @@ export default class Settings {
             previewAlarmAudio: "previewAlarm",
             alarmVolume: "alarmVolume",
             volumeBubble: ".volume__value"
-        }
+        };
 
         this.body = document.querySelector(`${this.selectors.body}`);
         this.title = document.querySelector(`${this.selectors.title}`);
@@ -82,7 +82,7 @@ export default class Settings {
             "alarmSound": 1,
             "selctedAlarm": 2,
             "alarmVolAt": 50,
-        }
+        };
 
         this.savedSettings = JSON.parse(localStorage.getItem("appState")) || localStorage.setItem("appState", JSON.stringify(this.appState));
 
@@ -95,7 +95,7 @@ export default class Settings {
             this.settingsSVG.classList.toggle(this.hideClass);
             this.closeSVG.classList.toggle(this.hideClass);
             this.settingsPopup.classList.toggle(this.hideClass);
-        })
+        });
 
         this.navBtns.forEach((btn, index) => {
             btn.addEventListener("click", () => {
@@ -104,11 +104,11 @@ export default class Settings {
 
                 this.settingsControls.forEach(controls => {
                     controls.classList.add(this.hideClass);
-                })
+                });
                 this.settingsControls[index].classList.remove(this.hideClass);
 
-            })
-        })
+            });
+        });
 
         this.storedData = this.savedSettings || this.appState;
 
@@ -124,16 +124,16 @@ export default class Settings {
     }
 
     getState() {
-        this.timerInput.forEach((input, i) => {
+        this.timerInput.forEach((input) => {
             input.value = this.storedData[`${input.dataset.timerType}`];
-        })
+        });
 
         this.toggles.forEach(toggle => {
             toggle.checked = this.storedData[`${toggle.dataset.toggle}`];
 
             if (toggle.checked) this.enableSetting(toggle.dataset.toggle);
             else this.disableSetting(toggle.dataset.toggle);
-        })
+        });
 
         this.colorPalette.forEach((palette, i) => {
             if (i == this.storedData[`${palette.dataset.radio}`]) {
@@ -141,7 +141,7 @@ export default class Settings {
                 this.body.style.setProperty("--app-accent", `var(--c${i})`);
                 this.settingsPopup.dataset.accent = `acc${i}`;
             }
-        })
+        });
 
         this.dropdowns.forEach((dropdown) => {
             const selectedOption = dropdown.querySelector(".select__selected");
@@ -154,7 +154,7 @@ export default class Settings {
             selectedOption.innerText = menuSoundName[selectedIndex].innerText;
 
             this.alarmAudio.src = allAlarmSounds[selectedIndex];
-        })
+        });
 
         this.alarmVolume.value = this.storedData["alarmVolAt"];
         this.slideProgressTo(this.alarmVolume.value);
@@ -162,9 +162,8 @@ export default class Settings {
     }
 
     handleTimerInput() {
-        this.timerInput.forEach((input, i) => {
+        this.timerInput.forEach((input) => {
             input.addEventListener("input", () => {
-                // let type = this.timerType[i];
                 let forTimerType = document.querySelector(`button[data-timer-type="${input.dataset.timerType}"]`);
 
                 forTimerType.dataset.time = input.value;
@@ -178,8 +177,8 @@ export default class Settings {
                     setTime(this.minitsTime.dataset.secondsLeft, this.minitsTime);
                 }
 
-            })
-        })
+            });
+        });
     }
 
     handleToggles() {
@@ -192,9 +191,9 @@ export default class Settings {
                 if (toggle.checked) this.enableSetting(toggle.dataset.toggle);
                 else this.disableSetting(toggle.dataset.toggle);
 
-            })
+            });
 
-        })
+        });
     }
 
     handleDropdowns() {
@@ -230,8 +229,8 @@ export default class Settings {
 
                     this.storedData[dropdown.dataset.sound] = optIndex;
                     localStorage.setItem("appState", JSON.stringify(this.storedData));
-                })
-            })
+                });
+            });
 
             soundPreview.forEach((btn, btnIndex) => {
                 btn.addEventListener("click", (event) => {
@@ -239,8 +238,8 @@ export default class Settings {
 
                     this.previewAlarmAudio.src = allAlarmSounds[btnIndex];
                     previewAlarm();
-                })
-            })
+                });
+            });
         });
     }
 
@@ -261,7 +260,7 @@ export default class Settings {
     }
 
     enableSetting(toggledOption) {
-
+        /* eslint-disable indent */
         switch (toggledOption) {
             case "notifications":
                 this.enableNotifications();
@@ -291,6 +290,7 @@ export default class Settings {
             default:
                 return;
         }
+        /* eslint-enable indent */
     }
 
     enableNotifications() {
@@ -323,7 +323,7 @@ export default class Settings {
         }
 
         if (Notification.permission === "default") {
-            Notification.requestPermission().then((result) => this.handleNotificationPermission());
+            Notification.requestPermission().then(() => this.handleNotificationPermission());
         }
     }
 
@@ -343,8 +343,8 @@ export default class Settings {
 
                 this.storedData[`${palette.dataset.radio}`] = i;
                 localStorage.setItem("appState", JSON.stringify(this.storedData));
-            })
-        })
+            });
+        });
     }
 
     updateVolumeBubble() {
@@ -352,7 +352,7 @@ export default class Settings {
 
         this.alarmVolume.addEventListener("blur", () => {
             this.volumeBubble.classList.remove("show");
-        })
+        });
     }
 
     slideProgressTo(val) {

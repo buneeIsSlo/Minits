@@ -6,7 +6,7 @@ export const playAlarm = () => {
     // setTimeout(() => {
     //     audioElement.pause();
     // }, 2000);
-}
+};
 export const previewAlarm = () => {
     let audioElement = document.getElementById("previewAlarm");
 
@@ -15,4 +15,4 @@ export const previewAlarm = () => {
     // setTimeout(() => {
     //     audioElement.pause();
     // }, 2000);
-}
+};
