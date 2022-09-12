@@ -198,7 +198,16 @@
                             <div class="minits__settings-alarm-section">
                                 <p class="section--title">Alarm</p>
                                 <div class="minits__settings--center">
-
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label for="alarmVolume">Alarm Volume</label>
+                                        <div class="volume flex">
+                                            <span class="volume__value">50</span>
+                                            <input class="volume__range" id="alarmVolume" type="range" min="0" max="100"
+                                                value="0" data-alarmVolAt="50">
+                                            <div class="volume__progress"></div>
+                                        </div>
+                                    </div>
+                                    <hr class="seperator">
                                     <div class="minits__settings-controls--column flex">
                                         <label for="dropdown">Alarm Sound</label>
                                         <div class="dropdown" id="dropdown" name="dropdown" data-sound="alarmSound">
@@ -224,15 +233,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="minits__settings-controls--wrapper flex">
-                                        <label for="alarmVolume">Alarm Volume</label>
-                                        <div class="volume flex">
-                                            <span class="volume__value">50</span>
-                                            <input class="volume__range" id="alarmVolume" type="range" min="0" max="100"
-                                                value="0" data-alarmVolAt="50">
-                                            <div class="volume__progress"></div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
