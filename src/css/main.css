@@ -75,7 +75,7 @@ button {
     height: 40px;
     border-radius: 100%;
     background-color: #fff;
-    z-index: 3;
+    /* z-index: 3; */
 }
 
 .minits__timer-container {
@@ -187,7 +187,8 @@ button {
 
 .minits__settings-popup {
     height: 100%;
-    width: 360px;
+    width: 100%;
+    max-width: 360px;
     background-color: #fff;
     border-radius: 15px;
     position: fixed;
@@ -197,12 +198,24 @@ button {
     margin: 0 auto;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    animation: .3s translateIn ease-in-out forwards;
+    transition: transform .5s, opacity .3s cubic-bezier(0.85, 0, 0.15, 0.99);
     z-index: 2;
+}
+
+.minits__settings-header {
+    justify-content: space-between;
+    align-items: center;
 }
 
 .minits__settings-title {
     margin: 0;
+}
+
+.minits__settings-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    z-index: 3;
 }
 
 .minits__settings-nav {
@@ -428,17 +441,6 @@ input:checked+.slider:before {
 
 }
 
-@media (min-width: 400px) {
-    .minits__settings-popup {
-        height: 100%;
-        top: 0;
-        right: 0;
-        margin-right: 0;
-
-        transform: none;
-    }
-}
-
 
 @media (min-width: 768px) {
 
@@ -460,6 +462,7 @@ input:checked+.slider:before {
     }
 
 }
+
 
 @media (min-width: 1024px) {
     
@@ -587,9 +590,4 @@ input:checked+.slider:before {
     transform: scale(1.5);
     }
 
-}
-
-.minits__settings-popup {
-    width: 100%;
-    max-width: 360px;
 }

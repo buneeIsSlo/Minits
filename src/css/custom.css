@@ -157,6 +157,11 @@ body[data-theme="dark"] {
     /* width: 80%; */
 }
 
+.popup--exit {
+    transform: translateX(100%);
+    opacity: .4;
+}
+
 .toggle {
     position: relative;
     display: inline-block;

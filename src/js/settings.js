@@ -94,7 +94,12 @@ export default class Settings {
         this.settingsBtn.addEventListener("click", () => {
             this.settingsSVG.classList.toggle(this.hideClass);
             this.closeSVG.classList.toggle(this.hideClass);
-            this.settingsPopup.classList.toggle(this.hideClass);
+            this.settingsPopup.classList.toggle("popup--exit");
+        });
+
+        let btn = document.querySelector(".minits__settings-close");
+        btn.addEventListener("click", () => {
+            this.settingsPopup.classList.toggle("popup--exit");
         });
 
         this.navBtns.forEach((btn, index) => {
