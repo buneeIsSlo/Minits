@@ -21,8 +21,6 @@ export default class Settings {
         this.selectors = {
             body: "body",
             title: "title",
-            settingsSVG: "settings-icon",
-            closeSVG: "close-icon",
             settingsBtn: ".minits__settings",
             settingsPopup: ".minits__settings-popup",
             settingsNavBtns: ".minits__settings-nav-btn",
@@ -65,9 +63,6 @@ export default class Settings {
         this.menuActiveOptionClass = this.selectors.utilMenuActiveOption;
         this.hideClass = this.selectors.utilHide;
 
-        this.settingsSVG = document.getElementById(`${this.selectors.settingsSVG}`);
-        this.closeSVG = document.getElementById(`${this.selectors.closeSVG}`);
-
         this.appState = {
             "pomodoro": 25,
             "shortBreak": 5,
@@ -90,17 +85,7 @@ export default class Settings {
     }
 
     setUpEvents() {
-
-        this.settingsBtn.addEventListener("click", () => {
-            this.settingsSVG.classList.toggle(this.hideClass);
-            this.closeSVG.classList.toggle(this.hideClass);
-            this.settingsPopup.classList.toggle("popup--exit");
-        });
-
-        let btn = document.querySelector(".minits__settings-close");
-        btn.addEventListener("click", () => {
-            this.settingsPopup.classList.toggle("popup--exit");
-        });
+        this.handleSettings();
 
         this.navBtns.forEach((btn, index) => {
             btn.addEventListener("click", () => {
@@ -164,6 +149,21 @@ export default class Settings {
         this.alarmVolume.value = this.storedData["alarmVolAt"];
         this.slideProgressTo(this.alarmVolume.value);
         this.updateVolumeBubble();
+    }
+
+    handleSettings() {
+        this.settingsBtn.addEventListener("click", () => {
+            this.settingsPopup.classList.add("popup--enter");
+            this.settingsPopup.classList.remove("popup--exit");
+            this.settingsBtn.classList.add("settings--rotate");
+        });
+
+        const btn = document.querySelector(".minits__settings-close");
+        btn.addEventListener("click", () => {
+            this.settingsPopup.classList.remove("popup--enter");
+            this.settingsPopup.classList.add("popup--exit");
+            this.settingsBtn.classList.remove("settings--rotate");
+        });
     }
 
     handleTimerInput() {
