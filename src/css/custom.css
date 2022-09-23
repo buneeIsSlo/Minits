@@ -160,6 +160,15 @@ body[data-theme="dark"] {
     transform: rotate(-180deg);
 }
 
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    z-index: 5;
+    opacity: .4;
+    display: none;
+}
+
 .popup--enter{
     transform: translateX(0%);
     opacity: 1;

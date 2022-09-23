@@ -156,6 +156,7 @@ export default class Settings {
             this.settingsPopup.classList.add("popup--enter");
             this.settingsPopup.classList.remove("popup--exit");
             this.settingsBtn.classList.add("settings--rotate");
+            document.querySelector(".overlay").style.display = "block";
         });
 
         const btn = document.querySelector(".minits__settings-close");
@@ -163,6 +164,7 @@ export default class Settings {
             this.settingsPopup.classList.remove("popup--enter");
             this.settingsPopup.classList.add("popup--exit");
             this.settingsBtn.classList.remove("settings--rotate");
+            document.querySelector(".overlay").style.display = "none";
         });
     }
 

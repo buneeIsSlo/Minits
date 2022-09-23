@@ -199,7 +199,7 @@ button {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     /* transition: transform .5s, opacity .3s cubic-bezier(0.85, 0, 0.15, 0.99); */
-    z-index: 1;
+    z-index: 10;
     opacity: 0;
 }
 
@@ -218,7 +218,7 @@ button {
 .minits__settings-header {
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 15px double var(--accent);
 }
 
 .minits__settings-title {
@@ -265,6 +265,10 @@ button {
 .minits__settings-nav-btn:hover svg path {
     fill: var(--accent);
 }
+
+/* .minits__settings-nav-btn:focus:not(:focus-visible) svg path {
+    fill: #fff;
+} */
 
 .minits__settings-controls-wrapper {
     height: 485px;
