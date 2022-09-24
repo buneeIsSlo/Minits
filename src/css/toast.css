@@ -3,9 +3,10 @@
     width: calc(100% - 5rem);
     max-width: 360px;
     position: absolute;
-    bottom: 0%; 
+    top: 10%; 
     left: 50%;
     transform: translateX(-50%);
+    z-index: 10;
 }
 
 .toast__item {

@@ -49,7 +49,7 @@ let animations = {
         },
         {
             opacity: "0",
-            transform: "translate(20px)",
+            transform: "translateY(-20px)",
             visibility: "hidden"
         }
     ]
