@@ -171,6 +171,7 @@ export default class Settings {
     handleTimerInput() {
         this.timerInput.forEach((input) => {
             input.addEventListener("input", () => {
+                input.value = this.validateTimerInput(input.value);
                 let forTimerType = document.querySelector(`button[data-timer-type="${input.dataset.timerType}"]`);
 
                 forTimerType.dataset.time = input.value;
@@ -352,6 +353,15 @@ export default class Settings {
                 localStorage.setItem("appState", JSON.stringify(this.storedData));
             });
         });
+    }
+
+    validateTimerInput(inputValue) {
+        if (inputValue === "0" || inputValue === "")
+            return 1;
+        if (inputValue > 90)
+            return 90;
+
+        return inputValue;
     }
 
     updateVolumeBubble() {
