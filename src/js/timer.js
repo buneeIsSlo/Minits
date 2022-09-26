@@ -1,4 +1,4 @@
-import { setTime } from "./common";
+import { setTime, preventTimerEdit } from "./common";
 import { playAlarm } from "./audio";
 
 export default class Timer {
@@ -87,6 +87,8 @@ export default class Timer {
         this.minitsTime.classList.toggle(this.selectors.utilTimerRunning);
 
         this.beginCountdown(this.minitsTime.dataset.secondsLeft);
+
+        preventTimerEdit(this.navBtns, this.minitsTime);
     }
 
     resetTime() {
