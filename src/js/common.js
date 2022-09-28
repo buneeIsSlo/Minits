@@ -31,14 +31,13 @@ export const setTime = (seconds, timerDisplay, format = false) => {
     }
 };
 
-export const preventTimerEdit = (nav, timer) => {
-    const inputIndex = ([...nav].findIndex(btn => btn.classList.contains("active")));
+export const timerEdits = (timerRunning) => {
     const timerInputs = document.querySelectorAll(".minits__settings-timer-input");
 
-    // console.log(inputIndex, timerInputs[0], timer.classList.contains("active"));
-
-    if (timer.classList.contains("running"))
-        timerInputs[inputIndex].setAttribute("disabled", true);
-    else
-        timerInputs[inputIndex].removeAttribute("disabled");
+    timerInputs.forEach(input => {
+        if (!timerRunning)
+            input.removeAttribute("disabled");
+        else
+            input.setAttribute("disabled", true);
+    });
 };

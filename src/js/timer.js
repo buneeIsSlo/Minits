@@ -1,4 +1,4 @@
-import { setTime, preventTimerEdit } from "./common";
+import { setTime, timerEdits } from "./common";
 import { playAlarm } from "./audio";
 
 export default class Timer {
@@ -75,7 +75,10 @@ export default class Timer {
         this.navBtns.forEach((btn) => {
             btn.addEventListener("click", () => {
                 this.setActive(btn, btn.dataset.time);
+
                 this.minitsTime.classList.remove(this.selectors.utilTimerRunning);
+
+                timerEdits(this.minitsTime.classList.contains(this.selectors.utilTimerRunning));
             });
         });
     }
@@ -88,7 +91,7 @@ export default class Timer {
 
         this.beginCountdown(this.minitsTime.dataset.secondsLeft);
 
-        preventTimerEdit(this.navBtns, this.minitsTime);
+        timerEdits(this.minitsTime.classList.contains(this.selectors.utilTimerRunning));
     }
 
     resetTime() {
@@ -101,6 +104,8 @@ export default class Timer {
         this.minitsTime.dataset.secondsLeft = startTime;
 
         this.title.innerHTML = "Minits";
+
+        timerEdits(this.minitsTime.classList.remove(this.selectors.utilTimerRunning));
     }
 
     addActiveClass(element) {
@@ -195,13 +200,6 @@ export default class Timer {
         this.minitsTime.dataset.secondsStart = this.toSeconds(time);
         this.minitsTime.dataset.secondsLeft = this.toSeconds(time);
         setTime(this.minitsTime.dataset.secondsLeft, this.minitsTime);
-    }
-
-    currentTimer() {
-        this.navBtns.forEach(timer => {
-            if (timer.classList.contains(this.selectors.utilActive))
-                return timer.dataset.timerType;
-        });
     }
 
     switchSVG() {
