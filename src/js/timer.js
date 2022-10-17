@@ -77,8 +77,9 @@ export default class Timer {
                 this.setActive(btn, btn.dataset.time);
 
                 this.minitsTime.classList.remove(this.selectors.utilTimerRunning);
+                this.minitsTime.dataset.activeTimer = btn.dataset.timerType;
 
-                timerEdits(this.minitsTime.classList.contains(this.selectors.utilTimerRunning));
+                timerEdits(this.minitsTime.classList.contains(this.selectors.utilTimerRunning), this.minitsTime.dataset.activeTimer);
             });
         });
     }
@@ -91,7 +92,7 @@ export default class Timer {
 
         this.beginCountdown(this.minitsTime.dataset.secondsLeft);
 
-        timerEdits(this.minitsTime.classList.contains(this.selectors.utilTimerRunning));
+        timerEdits(this.minitsTime.classList.contains(this.selectors.utilTimerRunning), this.minitsTime.dataset.activeTimer);
     }
 
     resetTime() {
@@ -105,7 +106,7 @@ export default class Timer {
 
         this.title.innerHTML = "Minits";
 
-        timerEdits(this.minitsTime.classList.remove(this.selectors.utilTimerRunning));
+        timerEdits(this.minitsTime.classList.remove(this.selectors.utilTimerRunning), this.minitsTime.dataset.activeTimer);
     }
 
     addActiveClass(element) {

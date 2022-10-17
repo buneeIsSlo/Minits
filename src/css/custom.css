@@ -186,7 +186,7 @@ body[data-theme="dark"] {
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .active.active {

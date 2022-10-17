@@ -31,13 +31,22 @@ export const setTime = (seconds, timerDisplay, format = false) => {
     }
 };
 
-export const timerEdits = (timerRunning) => {
+export const timerEdits = (timerRunning, type) => {
     const timerInputs = document.querySelectorAll(".minits__settings-timer-input");
+    const inp = document.querySelector(`[data-timer-type="${type}"]`);
+    const infoIcon = document.querySelectorAll(".stop-timer-info");
 
-    timerInputs.forEach(input => {
-        if (!timerRunning)
+    if (timerRunning) {
+        timerInputs.forEach((inp, i) => {
+            if (inp.dataset.timerType === type)
+                infoIcon[i].classList.remove("hide");
+        });
+        inp.setAttribute("disabled", true);
+    }
+    else {
+        timerInputs.forEach((input, i) => {
             input.removeAttribute("disabled");
-        else
-            input.setAttribute("disabled", true);
-    });
+            infoIcon[i].classList.add("hide");
+        });
+    }
 };

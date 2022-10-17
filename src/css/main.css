@@ -354,11 +354,29 @@ button {
     /* background-color: yellow; */
 }
 
+.minits__settings-label {
+    position: relative;
+}
+
 input[type=number] {
     width: 60px;
     padding: .5em;
     border: 2px solid var(--accent);
     border-radius: 3px;
+}
+
+.stop-timer-info {
+    position: absolute;
+    top: 50%;
+    right: -20%;
+    transform: translate(50%, -50%);
+    width: 1rem;
+    height: 1em;
+    /* outline: 2px solid blue; */
+    background-color: transparent;
+    color: white;
+    display: grid;
+    place-content: center;
 }
 
 input[type=checkbox] {
