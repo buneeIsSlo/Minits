@@ -32,15 +32,13 @@ export const setTime = (seconds, timerDisplay, format = false) => {
 };
 
 export const timerEdits = (timerRunning, type) => {
-    const timerInputs = document.querySelectorAll(".minits__settings-timer-input");
+    const timerInputs = [...document.querySelectorAll(".minits__settings-timer-input")];
     const inp = document.querySelector(`[data-timer-type="${type}"]`);
     const infoIcon = document.querySelectorAll(".stop-timer-info");
 
     if (timerRunning) {
-        timerInputs.forEach((inp, i) => {
-            if (inp.dataset.timerType === type)
-                infoIcon[i].classList.remove("hide");
-        });
+        const currentTimerIndex = timerInputs.findIndex(inp => inp.dataset.timerType === type);
+        infoIcon[currentTimerIndex].classList.remove("hide");
         inp.setAttribute("disabled", true);
     }
     else {
