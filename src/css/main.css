@@ -365,18 +365,29 @@ input[type=number] {
     border-radius: 3px;
 }
 
+input[type=number]:disabled {
+    background-color: #e7e7e7;
+    color: #b7b7b7;
+    border: 2px solid #c0c0c0;
+}
+
 .stop-timer-info {
     position: absolute;
     top: 50%;
     right: -20%;
     transform: translate(50%, -50%);
-    width: 1rem;
+    width: 1em;
     height: 1em;
-    /* outline: 2px solid blue; */
     background-color: transparent;
     color: white;
     display: grid;
     place-content: center;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+}
+
+.stop-timer-info:hover {
+    filter: brightness(70%);
 }
 
 input[type=checkbox] {
