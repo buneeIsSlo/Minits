@@ -30,6 +30,7 @@ export default class Settings {
             minitsTime: ".minits__time",
             timerType: ".minits--nav-btn",
             timerInput: ".minits__settings-timer-input",
+            timerInputInfoBtn: ".stop-timer-info",
             colorInput: ".radio",
             toggles: "data-toggle",
             dropdowns: ".dropdown",
@@ -50,6 +51,7 @@ export default class Settings {
         this.minitsTime = document.querySelector(`${this.selectors.minitsTime}`);
         this.timerType = document.querySelectorAll(`${this.selectors.timerType}`);
         this.timerInput = document.querySelectorAll(`${this.selectors.timerInput}`);
+        this.timerInputInfoBtn = document.querySelectorAll(`${this.selectors.timerInputInfoBtn}`);
         this.toggles = document.querySelectorAll(`[${this.selectors.toggles}]`);
         this.dropdowns = document.querySelectorAll(`${this.selectors.dropdowns}`);
         this.colorPalette = document.querySelectorAll(`${this.selectors.colorInput}`);
@@ -185,6 +187,12 @@ export default class Settings {
                     setTime(this.minitsTime.dataset.secondsLeft, this.minitsTime);
                 }
 
+            });
+        });
+
+        this.timerInputInfoBtn.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                toast.show(`${icons.info}`, "Info", "Please stop or reset the timer to edit the time.");
             });
         });
     }
