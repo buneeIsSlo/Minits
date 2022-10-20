@@ -66,6 +66,7 @@ body[data-theme="light"] {
 
     --active-color: hsla(0, 0%, 100%, 0.9);
 
+    --bg-settings-btn: #fff;
     --bg-settings-popup: #fff;
     --bg-settings-type: #404040;
     --bg-section-title: #eee;
@@ -79,6 +80,7 @@ body[data-theme="light"] {
     --c-section-title-text: #5e5e5e;
     --c-settings-type-text: #fff;
 
+    --outline-settings-btn: hsla(0, 0%, 0%, 0.3);
     --outline-settings-nav: #404040;
     --outline-settings-wrapper: #404040;
     --outline-color-palette-checked: #404040;
@@ -87,6 +89,7 @@ body[data-theme="light"] {
     --outline-dropdown-select: #404040;
     --outline-dropdown-menu: #404040;
 
+    --svg-settings-btn: #404040;
     --svg-settings-close: #404040;
     --svg-settings-nav-btn: #404040;
 
@@ -120,6 +123,7 @@ body[data-theme="dark"] {
 
     --active-color: hsl(var(--app-accent));
 
+    --bg-settings-btn: #404040;
     --bg-settings-popup: #404040;
     --bg-settings-type: #fff;
     --bg-section-title: #5e5e5e;
@@ -133,6 +137,7 @@ body[data-theme="dark"] {
     --c-section-title-text: #eee;
     --c-settings-type-text: #404040;
 
+    --outline-settings-btn: hsla(var(--app-accent), .8);
     --outline-settings-nav: #fff;
     --outline-settings-wrapper: #fff;
     --outline-color-palette-checked: #eee;
@@ -141,6 +146,7 @@ body[data-theme="dark"] {
     --outline-dropdown-select: #fff;
     --outline-dropdown-menu: #fff;
 
+    --svg-settings-btn: #fff;
     --svg-settings-close: #fff;
     --svg-settings-nav-btn: #fff;
 
@@ -422,6 +428,7 @@ body[data-theme="dark"] {
     width: 5%;
     height: 2px;
     background-color: var(--accent);
+    pointer-events: none;
 }
 
 .volume__value {

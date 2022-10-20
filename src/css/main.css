@@ -74,9 +74,18 @@ button {
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    background-color: #fff;
-    /* z-index: 3; */
+    background-color: var(--bg-settings-btn);
+    outline: 2px solid var(--outline-settings-btn);
+    cursor: pointer;
     transition: transform .5s cubic-bezier(0.22, 0.74, 0.45, 0.89);
+}
+
+.minits__settings svg path {
+    fill: var(--svg-settings-btn);
+}
+
+.minits__settings:hover svg path {
+    opacity: 0.8;
 }
 
 .minits__timer-container {
@@ -240,7 +249,6 @@ button {
 }
 
 .minits__settings-close:hover svg path{
-    /* background-color: #f3f3f3; */
     fill: var(--accent);
 }
 
