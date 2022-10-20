@@ -24,7 +24,7 @@ export const setTime = (seconds, timerDisplay, format = false) => {
     secs = secs < 10 ? `0${secs}` : secs;
 
     if (format) {
-        timerDisplay.innerHTML = `[ ${mins}:${secs} ] - Minits`;
+        timerDisplay.innerHTML = ` Minits - [ ${mins}:${secs} ]`;
     }
     else {
         timerDisplay.innerHTML = `${mins}:${secs}`;
