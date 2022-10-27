@@ -217,6 +217,7 @@ body[data-theme="dark"] {
 .overlay {
     position: absolute;
     inset: 0;
+    height: 100vh;
     background-color: black;
     z-index: 5;
     opacity: .4;
