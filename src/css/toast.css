@@ -7,6 +7,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    border-left: 20px;
 }
 
 .toast__item {
@@ -23,31 +24,16 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     position: relative;
+    border-left: .5em solid var(--toast-border);
 }
 
 .toast__item:hover {
     filter:sepia(100%) brightness(110%);
 }
 
-.toast__item:before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    background-color: var(--toast-before);
-    padding: 0 .3rem;
-    height: calc(100% + 1px);
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
 .toast__content {
     display: flex;
     flex-direction: column;
-}
-
-.toast__icon--wrapper {
-    margin-left: .5rem;
 }
 
 .toast__state {
