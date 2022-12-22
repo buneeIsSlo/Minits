@@ -190,7 +190,7 @@ button {
 
 #resetIcon path,
 #ambienceOffIcon path,
-#ambienceOnIcon {
+#ambienceOnIcon path {
     fill: var(--fill-icon-secondary);
 }
 
