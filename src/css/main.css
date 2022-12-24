@@ -491,6 +491,11 @@ input:checked+.slider:before {
     fill: #fff;
 }
 
+.made-with {
+    position: fixed;
+    bottom: 0;
+}
+
 @keyframes translateIn {
 
     from {
