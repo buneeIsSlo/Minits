@@ -48,3 +48,13 @@ export const timerEdits = (timerRunning, type) => {
         });
     }
 };
+
+export const pulseTimer = () => {
+    const timerContainer = document.querySelector(".minits__timer-inner");
+
+    timerContainer.classList.add("pulse");
+
+    timerContainer.addEventListener("webkitAnimationEnd", () => {
+        timerContainer.classList.remove("pulse");
+    });
+};

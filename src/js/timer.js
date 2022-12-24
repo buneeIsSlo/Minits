@@ -1,4 +1,4 @@
-import { setTime, timerEdits } from "./common";
+import { setTime, timerEdits, pulseTimer } from "./common";
 import { playAlarm } from "./audio";
 
 export default class Timer {
@@ -76,6 +76,7 @@ export default class Timer {
             btn.addEventListener("click", () => {
                 this.setActive(btn, btn.dataset.time);
 
+                pulseTimer();
                 this.minitsTime.classList.remove(this.selectors.utilTimerRunning);
                 this.minitsTime.dataset.activeTimer = btn.dataset.timerType;
 
