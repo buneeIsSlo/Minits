@@ -197,11 +197,10 @@ body[data-theme="dark"] {
 
 .active.active {
     background: transparent;
-    color: hsla(0, 0%, 100%, 0.9);
     color: var(--active-color);
     box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.38), inset 2px 2px 2px rgba(64, 64, 64, 0.2);
-    box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.236), inset 2px 2px 2px rgba(255, 255, 255, 0.236);
     pointer-events: none;
+    text-shadow: 1px 1px 5px;
 }
 
 .seperator {
