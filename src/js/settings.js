@@ -113,6 +113,14 @@ export default class Settings {
             this.handleRangeSliders();
         });
 
+        // test
+        const volBtn = document.querySelector(".volBtn");
+        const volSlider = document.getElementById("ambVol");
+
+        volBtn.addEventListener("click", () => {
+            volSlider.classList.toggle("hide");
+        });
+
     }
 
     getState() {

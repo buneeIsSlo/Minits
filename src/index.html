@@ -242,7 +242,6 @@
                                         <label for="dropdown">Alarm Sound</label>
                                         <div class="dropdown" id="dropdown" name="dropdown" data-sound="alarmSound">
                                             <div class="select">
-                                                <audio id="ambience">No audio support</audio>
                                                 <audio id="alarm">No audio</audio>
                                                 <span class="select__selected" data-selected-alarm="2">Sound2</span>
                                                 <sapn class="select__caret"></sapn>
@@ -264,7 +263,42 @@
                                             </ul>
                                         </div>
                                     </div>
-
+                                </div>
+                            </div>
+                            <div class="minits__settings-alarm-section">
+                                <p class="section--title">Ambience</p>
+                                <div class="minits__settings-controls flex"
+                                    style="outline: 2px solid red; align-items: center;">
+                                    <div class="minits__settings-controls"
+                                        style="outline: 2px solid green; width: 75%;">
+                                        <!-- <label for="dropdown">Ambience</label> -->
+                                        <div class="dropdown" id="dropdown" name="dropdown" data-sound="alarmSound">
+                                            <div class="select">
+                                                <audio id="ambience">No audio</audio>
+                                                <span class="select__selected" data-selected-alarm="2">Sound2</span>
+                                                <sapn class="select__caret"></sapn>
+                                            </div>
+                                            <ul class="menu">
+                                                <audio id="previewAlarm">No audio</audio>
+                                                <li class="menu__option flex">
+                                                    <span class="menu__sound-name">Sound1</span>
+                                                </li>
+                                                <li class="menu__option flex">
+                                                    <span class="menu__sound-name">Sound2</span>
+                                                </li>
+                                                <li class="menu__option flex">
+                                                    <span class="menu__sound-name">Sound3</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <button class="volBtn">🔊</button>
+                                    <div id="ambVol" class="volume flex hide">
+                                        <span class="volume__value">50</span>
+                                        <input class="volume__range" id="alarmVolume" type="range" min="0" max="100"
+                                            value="0" data-alarmVolAt="50">
+                                        <div class="volume__progress"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
