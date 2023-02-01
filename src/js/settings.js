@@ -39,7 +39,9 @@ export default class Settings {
             alarmAudio: "alarm",
             previewAlarmAudio: "previewAlarm",
             alarmVolume: "alarmVolume",
-            volumeBubble: ".volume__value"
+            volumeBubble: ".volume__value",
+            ambiAudio: "ambience",
+            ambiVolume: "ambiVolume",
         };
 
         this.body = document.querySelector(`${this.selectors.body}`);
@@ -60,6 +62,8 @@ export default class Settings {
         this.previewAlarmAudio = document.getElementById(`${this.selectors.previewAlarmAudio}`);
         this.alarmVolume = document.getElementById(`${this.selectors.alarmVolume}`);
         this.volumeBubble = document.querySelector(`${this.selectors.volumeBubble}`);
+        this.ambiAudio = document.getElementById(`${this.selectors.ambiAudio}`);
+        this.ambiVolume = document.getElementById(`${this.selectors.ambiVolume}`);
 
         this.activeTabClass = this.selectors.utilTabActive;
         this.menuActiveOptionClass = this.selectors.utilMenuActiveOption;
@@ -114,12 +118,12 @@ export default class Settings {
         });
 
         // test
-        const volBtn = document.querySelector(".volBtn");
-        const volSlider = document.getElementById("ambVol");
+        // const volBtn = document.querySelector(".volBtn");
+        // const volSlider = document.getElementById("ambVol");
 
-        volBtn.addEventListener("click", () => {
-            volSlider.classList.toggle("hide");
-        });
+        // volBtn.addEventListener("click", () => {
+        //     volSlider.classList.toggle("hide");
+        // });
 
     }
 
@@ -143,22 +147,22 @@ export default class Settings {
             }
         });
 
-        this.dropdowns.forEach((dropdown) => {
-            const selectedOption = dropdown.querySelector(".select__selected");
-            const options = dropdown.querySelectorAll(".menu__option");
-            const menuSoundName = dropdown.querySelectorAll(".menu__sound-name");
+        // this.dropdowns.forEach((dropdown) => {
+        //     const selectedOption = dropdown.querySelector(".select__selected");
+        //     const options = dropdown.querySelectorAll(".menu__option");
+        //     const menuSoundName = dropdown.querySelectorAll(".menu__sound-name");
 
-            const selectedIndex = this.storedData[dropdown.dataset.sound];
+        //     const selectedIndex = this.storedData[dropdown.dataset.sound];
 
-            options[selectedIndex].classList.add(this.menuActiveOptionClass);
-            selectedOption.innerText = menuSoundName[selectedIndex].innerText;
+        //     options[selectedIndex].classList.add(this.menuActiveOptionClass);
+        //     selectedOption.innerText = menuSoundName[selectedIndex].innerText;
 
-            this.alarmAudio.src = allAlarmSounds[selectedIndex];
-        });
+        //     this.alarmAudio.src = allAlarmSounds[selectedIndex];
+        // });
 
-        this.alarmVolume.value = this.storedData["alarmVolAt"];
-        this.slideProgressTo(this.alarmVolume.value);
-        this.updateVolumeBubble();
+        // this.alarmVolume.value = this.storedData["alarmVolAt"];
+        // this.slideProgressTo(this.alarmVolume.value);
+        // this.updateVolumeBubble();
     }
 
     handleSettings() {
@@ -269,7 +273,10 @@ export default class Settings {
 
     handleRangeSliders() {
         this.alarmVolume.addEventListener("input", () => {
+            const volumeVal = document.querySelector(".volume__value.alarmVal");
+
             this.slideProgressTo(this.alarmVolume.value);
+            volumeVal.innerHTML = `${this.alarmVolume.value}%`;
 
             let vol = this.alarmVolume.value / 100;
             this.previewAlarmAudio.volume = vol;
@@ -281,6 +288,15 @@ export default class Settings {
             localStorage.setItem("appState", JSON.stringify(this.storedData));
         });
 
+        this.ambiVolume.addEventListener("input", () => {
+            const volumeVal = document.querySelector(".volume__value.ambiVal");
+
+            this.slideProgressTo(this.ambiAudio.value);
+            volumeVal.innerHTML = `${this.ambiVolume.value}%`;
+
+            let vol = this.ambiVolume.value / 100;
+            this.ambiAudio.volume = vol;
+        });
     }
 
     enableSetting(toggledOption) {
@@ -392,8 +408,6 @@ export default class Settings {
         const progress = document.querySelector(".volume__progress");
 
         progress.style.width = `${val}%`;
-        this.volumeBubble.innerHTML = val;
-        this.volumeBubble.style.left = `${val}%`;
     }
 
     removeExistingActiveClass() {

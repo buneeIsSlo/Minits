@@ -229,22 +229,12 @@
                                 <p class="section--title">Alarm</p>
                                 <div class="minits__settings--center">
                                     <div class="minits__settings-controls--wrapper flex">
-                                        <label for="alarmVolume">Alarm Volume</label>
-                                        <div class="volume flex">
-                                            <span class="volume__value">50</span>
-                                            <input class="volume__range" id="alarmVolume" type="range" min="0" max="100"
-                                                value="0" data-alarmVolAt="50">
-                                            <div class="volume__progress"></div>
-                                        </div>
-                                    </div>
-                                    <hr class="seperator">
-                                    <div class="minits__settings-controls--column flex">
-                                        <label for="dropdown">Alarm Sound</label>
+                                        <label for="dropdown">Pick Sound</label>
                                         <div class="dropdown" id="dropdown" name="dropdown" data-sound="alarmSound">
                                             <div class="select">
                                                 <audio id="alarm">No audio</audio>
                                                 <span class="select__selected" data-selected-alarm="2">Sound2</span>
-                                                <sapn class="select__caret"></sapn>
+                                                <span class="select__caret"></span>
                                             </div>
                                             <ul class="menu">
                                                 <audio id="previewAlarm">No audio</audio>
@@ -263,15 +253,64 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    <hr class="seperator">
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label for="alarmVolume">Volume</label>
+                                        <div class="volume-container flex">
+                                            <div class="volume flex">
+                                                <input class="volume__range" id="alarmVolume" type="range" min="0"
+                                                    max="100" value="0" data-alarmVolAt="50">
+                                                <div class="volume__progress"></div>
+                                            </div>
+                                            <span class="volume__value alarmVal">50%</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="minits__settings-alarm-section">
+                                <p class="section--title">Ambience</p>
+                                <div class="minits__settings--center">
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label for="dropdown">Pick Track</label>
+                                        <div class="dropdown" id="dropdown" name="dropdown" data-sound="ambiSound">
+                                            <div class="select">
+                                                <audio id="ambience">No audio</audio>
+                                                <span class="select__selected" data-selected-ambi="2">Sound2</span>
+                                                <span class="select__caret"></span>
+                                            </div>
+                                            <ul class="menu">
+                                                <li class="menu__option">
+                                                    <span class="menu__sound-name">Sound1</span>
+                                                </li>
+                                                <li class="menu__option">
+                                                    <span class="menu__sound-name">Sound2</span>
+                                                </li>
+                                                <li class="menu__option">
+                                                    <span class="menu__sound-name">Sound3</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr class="seperator">
+                                    <div class="minits__settings-controls--wrapper flex">
+                                        <label for="ambiVolume">Volume</label>
+                                        <div class="volume-container flex">
+                                            <div class="volume flex">
+                                                <input class="volume__range" id="ambiVolume" type="range" min="0"
+                                                    max="100" value="0" data-ambiVolAt="50">
+                                                <div class="volume__progress"></div>
+                                            </div>
+                                            <span class="volume__value ambiVal">100%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="minits__settings-alarm-section">
                                 <p class="section--title">Ambience</p>
                                 <div class="minits__settings-controls flex"
                                     style="outline: 2px solid red; align-items: center;">
                                     <div class="minits__settings-controls"
                                         style="outline: 2px solid green; width: 75%;">
-                                        <!-- <label for="dropdown">Ambience</label> -->
                                         <div class="dropdown" id="dropdown" name="dropdown" data-sound="alarmSound">
                                             <div class="select">
                                                 <audio id="ambience">No audio</audio>
@@ -300,7 +339,7 @@
                                         <div class="volume__progress"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
