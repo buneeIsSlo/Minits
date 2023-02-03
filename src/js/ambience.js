@@ -10,13 +10,13 @@ export default class Ambience {
             ambienceBtn: ".minits__ambience",
             ambienceOnIcon: "ambienceOnIcon",
             ambienceOffIcon: "ambienceOffIcon",
-            ambienceAudo: "ambience"
+            ambienceAudio: "ambience"
         };
 
         this.ambienceBtn = document.querySelector(this.selectors.ambienceBtn);
         this.ambienceOnIcon = document.getElementById(this.selectors.ambienceOnIcon);
         this.ambienceOffIcon = document.getElementById(this.selectors.ambienceOffIcon);
-        this.ambienceAudio = document.getElementById(this.selectors.ambienceAudo);
+        this.ambienceAudio = document.getElementById(this.selectors.ambienceAudio);
 
         return true;
     }

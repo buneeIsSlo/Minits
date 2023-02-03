@@ -232,22 +232,26 @@
                                         <label for="dropdown">Pick Sound</label>
                                         <div class="dropdown" id="dropdown" name="dropdown" data-sound="alarmSound">
                                             <div class="select">
-                                                <audio id="alarm">No audio</audio>
+                                                <audio class="" id="alarm">No audio</audio>
                                                 <span class="select__selected" data-selected-alarm="2">Sound2</span>
                                                 <span class="select__caret"></span>
                                             </div>
                                             <ul class="menu">
                                                 <audio id="previewAlarm">No audio</audio>
                                                 <li class="menu__option flex">
-                                                    <span class="menu__sound-name">Sound1</span>
+                                                    <span class="menu__sound-name">Analog</span>
                                                     <button class="menu__sound-preview" data-snd="a1">&#128362;</button>
                                                 </li>
                                                 <li class="menu__option flex">
-                                                    <span class="menu__sound-name">Sound2</span>
+                                                    <span class="menu__sound-name">Buzzer</span>
                                                     <button class="menu__sound-preview" data-snd="a2">&#128362;</button>
                                                 </li>
                                                 <li class="menu__option flex">
-                                                    <span class="menu__sound-name">Sound3</span>
+                                                    <span class="menu__sound-name">Digital</span>
+                                                    <button class="menu__sound-preview">&#128362;</button>
+                                                </li>
+                                                <li class="menu__option flex">
+                                                    <span class="menu__sound-name">Squirble</span>
                                                     <button class="menu__sound-preview">&#128362;</button>
                                                 </li>
                                             </ul>
@@ -260,7 +264,7 @@
                                             <div class="volume flex">
                                                 <input class="volume__range" id="alarmVolume" type="range" min="0"
                                                     max="100" value="0" data-alarmVolAt="50">
-                                                <div class="volume__progress"></div>
+                                                <div class="volume__progress alarmProgress"></div>
                                             </div>
                                             <span class="volume__value alarmVal">50%</span>
                                         </div>
@@ -298,7 +302,7 @@
                                             <div class="volume flex">
                                                 <input class="volume__range" id="ambiVolume" type="range" min="0"
                                                     max="100" value="0" data-ambiVolAt="50">
-                                                <div class="volume__progress"></div>
+                                                <div class="volume__progress ambiProgress"></div>
                                             </div>
                                             <span class="volume__value ambiVal">100%</span>
                                         </div>

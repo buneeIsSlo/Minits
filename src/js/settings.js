@@ -2,11 +2,12 @@ import { setTime, icons } from "./common";
 import Toast from "./toast";
 import { previewAlarm } from "./audio";
 
-import bell from "../assets/audios/alarm-bell.mp3";
-import bird from "../assets/audios/alarm-bird.mp3";
-import digital from "../assets/audios/alarm-digital.mp3";
+import analog from "../assets/audios/analog.mp3";
+import buzzer from "../assets/audios/buzzer.mp3";
+import digital from "../assets/audios/digital.mp3";
+import squirble from "../assets/audios/squirble.mp3";
 
-const allAlarmSounds = [bell, bird, digital];
+const allAlarmSounds = [analog, buzzer, digital, squirble];
 
 let toast = new Toast();
 
@@ -83,6 +84,8 @@ export default class Settings {
             "alarmSound": 1,
             "selctedAlarm": 2,
             "alarmVolAt": 50,
+            "ambiSound": 1,
+            "ambiVolAt": 50,
         };
 
         this.savedSettings = JSON.parse(localStorage.getItem("appState")) || localStorage.setItem("appState", JSON.stringify(this.appState));
@@ -117,14 +120,6 @@ export default class Settings {
             this.handleRangeSliders();
         });
 
-        // test
-        // const volBtn = document.querySelector(".volBtn");
-        // const volSlider = document.getElementById("ambVol");
-
-        // volBtn.addEventListener("click", () => {
-        //     volSlider.classList.toggle("hide");
-        // });
-
     }
 
     getState() {
@@ -147,22 +142,26 @@ export default class Settings {
             }
         });
 
-        // this.dropdowns.forEach((dropdown) => {
-        //     const selectedOption = dropdown.querySelector(".select__selected");
-        //     const options = dropdown.querySelectorAll(".menu__option");
-        //     const menuSoundName = dropdown.querySelectorAll(".menu__sound-name");
+        this.dropdowns.forEach((dropdown) => {
+            const selectField = dropdown.querySelector(".select");
+            const audio = selectField.querySelector("audio");
+            const selectedOption = selectField.querySelector(".select__selected");
+            const options = dropdown.querySelectorAll(".menu__option");
+            const menuSoundName = dropdown.querySelectorAll(".menu__sound-name");
 
-        //     const selectedIndex = this.storedData[dropdown.dataset.sound];
+            const selectedIndex = this.storedData[dropdown.dataset.sound];
+            console.log(selectedIndex);
 
-        //     options[selectedIndex].classList.add(this.menuActiveOptionClass);
-        //     selectedOption.innerText = menuSoundName[selectedIndex].innerText;
+            options[selectedIndex].classList.add(this.menuActiveOptionClass);
+            selectedOption.innerText = menuSoundName[selectedIndex].innerText;
 
-        //     this.alarmAudio.src = allAlarmSounds[selectedIndex];
-        // });
+            audio.src = allAlarmSounds[selectedIndex];
+        });
 
-        // this.alarmVolume.value = this.storedData["alarmVolAt"];
-        // this.slideProgressTo(this.alarmVolume.value);
-        // this.updateVolumeBubble();
+        this.alarmVolume.value = this.storedData["alarmVolAt"];
+        this.handleAlarmVolume();
+        this.ambiVolume.value = this.storedData["ambiVolAt"];
+        this.handleAmbienceVolume();
     }
 
     handleSettings() {
@@ -228,6 +227,7 @@ export default class Settings {
 
         this.dropdowns.forEach(dropdown => {
             const selectField = dropdown.querySelector(".select");
+            const mainAudio = selectField.querySelector("audio");
             const caretIcon = dropdown.querySelector(".select__caret");
             const menu = dropdown.querySelector(".menu");
             const options = dropdown.querySelectorAll(".menu__option");
@@ -246,7 +246,7 @@ export default class Settings {
                 option.addEventListener("click", () => {
                     selectedOption.innerText = menuSoundName[optIndex].innerText;
                     selectedOption.dataset.selectedAlarm = optIndex;
-                    this.alarmAudio.src = allAlarmSounds[optIndex];
+                    mainAudio.src = allAlarmSounds[optIndex];
 
                     caretIcon.classList.remove("caret-rotate");
 
@@ -273,30 +273,39 @@ export default class Settings {
 
     handleRangeSliders() {
         this.alarmVolume.addEventListener("input", () => {
-            const volumeVal = document.querySelector(".volume__value.alarmVal");
-
-            this.slideProgressTo(this.alarmVolume.value);
-            volumeVal.innerHTML = `${this.alarmVolume.value}%`;
-
-            let vol = this.alarmVolume.value / 100;
-            this.previewAlarmAudio.volume = vol;
-            this.alarmAudio.volume = vol;
-
-            this.updateVolumeBubble();
-
+            this.handleAlarmVolume();
             this.storedData["alarmVolAt"] = this.alarmVolume.value;
             localStorage.setItem("appState", JSON.stringify(this.storedData));
         });
 
         this.ambiVolume.addEventListener("input", () => {
-            const volumeVal = document.querySelector(".volume__value.ambiVal");
-
-            this.slideProgressTo(this.ambiAudio.value);
-            volumeVal.innerHTML = `${this.ambiVolume.value}%`;
-
-            let vol = this.ambiVolume.value / 100;
-            this.ambiAudio.volume = vol;
+            this.handleAmbienceVolume();
+            this.storedData["ambiVolAt"] = this.ambiVolume.value;
+            localStorage.setItem("appState", JSON.stringify(this.storedData));
         });
+    }
+
+    handleAlarmVolume() {
+        const volumeVal = document.querySelector(".volume__value.alarmVal");
+        const volumeProgress = document.querySelector(".volume__progress.alarmProgress");
+
+        volumeVal.innerHTML = `${this.alarmVolume.value}%`;
+        volumeProgress.style.width = `${this.alarmVolume.value}%`;
+
+        let vol = this.alarmVolume.value / 100;
+        this.previewAlarmAudio.volume = vol;
+        this.alarmAudio.volume = vol;
+    }
+
+    handleAmbienceVolume() {
+        const volumeVal = document.querySelector(".volume__value.ambiVal");
+        const volumeProgress = document.querySelector(".volume__progress.ambiProgress");
+
+        volumeVal.innerHTML = `${this.ambiVolume.value}%`;
+        volumeProgress.style.width = `${this.ambiVolume.value}%`;
+
+        let vol = this.ambiVolume.value / 100;
+        this.ambiAudio.volume = vol;
     }
 
     enableSetting(toggledOption) {
