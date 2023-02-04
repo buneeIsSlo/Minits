@@ -1,4 +1,4 @@
-import { setTime, icons } from "./common";
+import { setTime, icons, playCodeRadio } from "./common";
 import Toast from "./toast";
 import { previewAlarm } from "./audio";
 
@@ -6,8 +6,10 @@ import analog from "../assets/audios/analog.mp3";
 import buzzer from "../assets/audios/buzzer.mp3";
 import digital from "../assets/audios/digital.mp3";
 import squirble from "../assets/audios/squirble.mp3";
+import ticking from "../assets/audios/ticktock.mp3";
 
 const allAlarmSounds = [analog, buzzer, digital, squirble];
+const allAmbientTracks = [ticking];
 
 let toast = new Toast();
 
@@ -155,7 +157,11 @@ export default class Settings {
             options[selectedIndex].classList.add(this.menuActiveOptionClass);
             selectedOption.innerText = menuSoundName[selectedIndex].innerText;
 
-            audio.src = allAlarmSounds[selectedIndex];
+            if (audio.id === "alarm") audio.src = allAlarmSounds[selectedIndex];
+            if (audio.id === "ambience") {
+                if (selectedIndex == 1) playCodeRadio(audio);
+                else audio.src = allAmbientTracks[selectedIndex];
+            }
         });
 
         this.alarmVolume.value = this.storedData["alarmVolAt"];
@@ -245,8 +251,22 @@ export default class Settings {
             options.forEach((option, optIndex) => {
                 option.addEventListener("click", () => {
                     selectedOption.innerText = menuSoundName[optIndex].innerText;
-                    selectedOption.dataset.selectedAlarm = optIndex;
-                    mainAudio.src = allAlarmSounds[optIndex];
+
+                    if (mainAudio.id === "alarm") {
+                        selectedOption.dataset.selectedAlarm = optIndex;
+                        mainAudio.src = allAlarmSounds[optIndex];
+                    }
+                    if (mainAudio.id === "ambience") {
+                        selectedOption.dataset.selectedAlarm = optIndex;
+
+                        if (optIndex == 1) playCodeRadio(mainAudio);
+                        else {
+                            mainAudio.src = allAmbientTracks[optIndex];
+                            if (mainAudio.dataset.currStatus === "playing") {
+                                mainAudio.play();
+                            }
+                        }
+                    }
 
                     caretIcon.classList.remove("caret-rotate");
 

@@ -30,27 +30,15 @@ export default class Ambience {
             this.ambienceOnIcon.classList.toggle("hide");
             this.ambienceOffIcon.classList.toggle("hide");
 
-            this.playCodeRadio();
+            if (this.ambienceOnIcon.classList.contains("hide")) {
+                this.ambienceAudio.pause();
+                this.ambienceAudio.dataset.currStatus = "paused";
+            }
+            else {
+                this.ambienceAudio.play();
+                this.ambienceAudio.dataset.currStatus = "playing";
+            }
         });
     }
 
-    async playCodeRadio() {
-
-        if (this.ambienceOnIcon.classList.contains("hide")) {
-            this.ambienceAudio.src = "";
-            this.ambienceAudio.pause();
-            return;
-        }
-
-        const API_URL = "https://coderadio-admin.freecodecamp.org/api/live/nowplaying/coderadio";
-
-        const response = await fetch(API_URL, { cache: "no-cache" });
-        const json = await response.json();
-
-        console.log(json);
-        const LISTEN_URL = json.station.listen_url;
-
-        this.ambienceAudio.src = LISTEN_URL;
-        this.ambienceAudio.play();
-    }
 }
