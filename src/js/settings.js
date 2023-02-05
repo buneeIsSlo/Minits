@@ -6,10 +6,11 @@ import analog from "../assets/audios/analog.mp3";
 import buzzer from "../assets/audios/buzzer.mp3";
 import digital from "../assets/audios/digital.mp3";
 import squirble from "../assets/audios/squirble.mp3";
-import ticking from "../assets/audios/ticktock.mp3";
+import ticking from "../assets/audios/ticking.wav";
+import deepSpace from "../assets/audios/deepSpace.mp3";
 
 const allAlarmSounds = [analog, buzzer, digital, squirble];
-const allAmbientTracks = [ticking];
+const allAmbientTracks = [ticking, "codeRadio", deepSpace];
 
 let toast = new Toast();
 
