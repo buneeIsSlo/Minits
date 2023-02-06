@@ -463,3 +463,11 @@ body[data-theme="dark"] {
   border-top-right-radius: 50%;
   border-bottom-left-radius: 50%;
 } */
+
+.now-playing {
+  width: 100%;
+  color: #fff;
+  position: absolute;
+  bottom: -20px;
+  text-align: center;
+}

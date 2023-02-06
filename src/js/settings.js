@@ -1,4 +1,4 @@
-import { setTime, icons, playCodeRadio } from "./common";
+import { setTime, icons, playCodeRadio, insertNowPlaying, removeNowPlaying } from "./common";
 import Toast from "./toast";
 import { previewAlarm } from "./audio";
 
@@ -88,6 +88,7 @@ export default class Settings {
             "selctedAlarm": 2,
             "alarmVolAt": 50,
             "ambiSound": 1,
+            "selectedAmbi": 2,
             "ambiVolAt": 50,
         };
 
@@ -258,13 +259,14 @@ export default class Settings {
                         mainAudio.src = allAlarmSounds[optIndex];
                     }
                     if (mainAudio.id === "ambience") {
-                        selectedOption.dataset.selectedAlarm = optIndex;
+                        selectedOption.dataset.selectedAmbi = optIndex;
 
                         if (optIndex == 1) playCodeRadio(mainAudio);
                         else {
                             mainAudio.src = allAmbientTracks[optIndex];
                             if (mainAudio.dataset.currStatus === "playing") {
                                 mainAudio.play();
+                                insertNowPlaying();
                             }
                         }
                     }
@@ -342,7 +344,7 @@ export default class Settings {
                 this.enableTimerInTitle();
                 break;
             case "nowPlaying":
-                // this.enableNowPlaying();
+                this.enableNowPlaying();
                 break;
             default:
                 return;
@@ -356,6 +358,9 @@ export default class Settings {
                 break;
             case "timerInTitle":
                 this.disableTimerInTitle();
+                break;
+            case "nowPlaying":
+                removeNowPlaying();
                 break;
             default:
                 return;
@@ -378,6 +383,13 @@ export default class Settings {
 
     enableTimerInTitle() {
         console.log("timeytime");
+    }
+
+    enableNowPlaying() {
+        if (this.ambiAudio.dataset.currStatus === "playing") {
+            console.log("isshyoo");
+            insertNowPlaying();
+        }
     }
 
     disableTimerInTitle() {

@@ -70,5 +70,33 @@ export const playCodeRadio = async (audio) => {
     const LISTEN_URL = json.station.listen_url;
 
     audio.src = LISTEN_URL;
-    if (audio.dataset.currStatus === "playing") audio.play();
+    if (audio.dataset.currStatus === "playing") {
+        audio.play();
+        insertNowPlaying();
+    }
+};
+
+
+const timerContainer = document.querySelector(".minits__timer-container");
+const nowPlayingtoggle = document.getElementById("nowPlaying");
+
+export const insertNowPlaying = () => {
+    if (!nowPlayingtoggle.checked) return;
+
+    removeNowPlaying();
+
+    const track = document.querySelector("[data-selected-ambi]").innerHTML;
+    let playingNode = document.createElement("p");
+
+    playingNode.className = "now-playing";
+    playingNode.innerHTML = `🎶 Now playing -- ${track}`;
+    timerContainer.appendChild(playingNode);
+};
+
+export const removeNowPlaying = () => {
+    let playingNode = document.querySelector(".now-playing");
+
+    if (playingNode) {
+        playingNode.parentNode.removeChild(playingNode);
+    }
 };
