@@ -65,6 +65,7 @@ body[data-theme="light"] {
   --bg-settings-popup: #fff;
   --bg-settings-type: #404040;
   --bg-section-title: #eee;
+  --bg-separator: #eee;
   --bg-color-palette: #eee;
   --bg-toggle-circle: #fff;
   --bg-dropdown-menu: #fff;
@@ -121,6 +122,7 @@ body[data-theme="dark"] {
   --bg-settings-popup: #404040;
   --bg-settings-type: #fff;
   --bg-section-title: #5e5e5e;
+  --bg-separator: #5e5e5e;
   --bg-color-palette: #5e5e5e;
   --bg-toggle-circle: #5e5e5e;
   --bg-dropdown-menu: #404040;
@@ -197,7 +199,7 @@ body[data-theme="dark"] {
 
 .seperator {
   border: none;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--bg-separator);
   margin: 0.8rem auto;
 }
 
@@ -440,7 +442,7 @@ body[data-theme="dark"] {
 } */
 
 .volume__value {
-  color: #404040;
+  color: var(--c-settings-popup-text);
   text-align: center;
   inline-size: 1.6em;
   width: 20%;
