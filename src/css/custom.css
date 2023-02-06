@@ -197,7 +197,7 @@ body[data-theme="dark"] {
   text-shadow: 1px 1px 5px;
 }
 
-.seperator {
+.separator {
   border: none;
   border-bottom: 1px solid var(--bg-separator);
   margin: 0.8rem auto;
