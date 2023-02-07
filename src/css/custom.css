@@ -80,6 +80,7 @@ body[data-theme="light"] {
   --outline-settings-nav: #404040;
   --outline-settings-wrapper: #404040;
   --outline-color-palette-checked: #404040;
+  --outline-input: #404040;
   --outline-toggle: #404040;
   --outline-toggle-circle: #404040;
   --outline-dropdown-select: #404040;
@@ -137,6 +138,7 @@ body[data-theme="dark"] {
   --outline-settings-nav: #fff;
   --outline-settings-wrapper: #fff;
   --outline-color-palette-checked: #eee;
+  --outline-input: #fff;
   --outline-toggle: #fff;
   --outline-toggle-circle: #fff;
   --outline-dropdown-select: #fff;

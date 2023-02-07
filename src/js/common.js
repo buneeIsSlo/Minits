@@ -89,7 +89,7 @@ export const insertNowPlaying = () => {
     let playingNode = document.createElement("p");
 
     playingNode.className = "now-playing";
-    playingNode.innerHTML = `🎶 Now playing -- ${track}`;
+    playingNode.innerHTML = `🎶 Now playing — ${track}`;
     timerContainer.appendChild(playingNode);
 };
 
