@@ -1,15 +1,22 @@
 @font-face {
   font-family: Quicksand;
+  font-weight: 300;
+  font-display: optimal;
+  src: url("../assets/fonts/Quicksand-Regular.woff");
+}
+
+@font-face {
+  font-family: Quicksand;
   font-weight: 500;
-  font-display: swap;
-  src: local(""), url("../assets/fonts/Quicksand-Medium.ttf");
+  font-display: optimal;
+  src: url("../assets/fonts/Quicksand-Medium.woff");
 }
 
 @font-face {
   font-family: Quicksand;
   font-weight: 700;
-  font-display: swap;
-  src: local(""), url("../assets/fonts/Quicksand-Bold.ttf");
+  font-display: optimal;
+  src: url("../assets/fonts/Quicksand-Bold.woff");
 }
 
 /* ----- ================= ----- */
@@ -439,6 +446,7 @@ body[data-theme="dark"] {
 
 .now-playing {
   width: 100%;
+  font-weight: 300;
   color: #fff;
   position: absolute;
   bottom: -20px;
