@@ -1,5 +1,28 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WebpackPwaManifest = require("webpack-pwa-manifest");
+const options = {
+    publicPath: "/",
+    filename: "manifest.json",
+    name: "Minits Pomodoro Timer",
+    short_name: "Minits",
+    start_url: "/",
+    display: "standalone",
+    theme_color: "#202124",
+    background_color: "#404040",
+    icons: [
+        {
+            src: path.resolve("src/assets/images/logo192.png"),
+            sizes: "192x192",
+            type: "image/png"
+        },
+        {
+            src: path.resolve("src/assets/images/logo512.png"),
+            sizes: "512x512",
+            type: "image/png"
+        }
+    ]
+};
 
 module.exports = {
     entry: {
@@ -25,6 +48,7 @@ module.exports = {
                     }
                 }
             },
+
             {
                 test: /\.html$/,
                 use: "html-loader"
@@ -41,6 +65,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: path.resolve(__dirname, "../src/index.html")
-        })
+        }),
+
+        new WebpackPwaManifest(options)
     ]
 };
