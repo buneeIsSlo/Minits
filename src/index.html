@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <meta name="description"
+        content=" Minits is an easy-to-use pomodoro timer to help you get things done. Install it with a click of a button and use it offline.">
+    <meta name="keywords"
+        content="minits, minits timer, minutes, focus, pomodoro technique, tomato timer, pomodoro timer, online pomodoro timer, productivity tools, getin things done, productivity, digital timer, concentration techniques, pomodoro resources, pomodoro software">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/images/logo192.png" type="image/x-icon">
     <title>Minits</title>
@@ -14,7 +19,7 @@
     <div class="minits__container flex">
         <header class="minits__header flex">
             <h1 class="minits__logo">Minits </h1>
-            <button class="minits__settings">
+            <button class="minits__settings" aria-label="Open settings">
                 <svg id="settings-icon" width="21" height="22" viewBox="0 0 21 22" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -24,8 +29,8 @@
             </button>
             <div class="minits__settings-popup" data-accent="acc0">
                 <div class="minits__settings-header flex">
-                    <h3 class="minits__settings-title">Settings</h3>
-                    <button class="minits__settings-close">
+                    <p class="minits__settings-title">Settings</p>
+                    <button class="minits__settings-close" aria-label="Close settings">
                         <svg id="close-icon" class="hid" width="18" height="18" viewBox="0 0 18 18" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -36,7 +41,9 @@
                 </div>
                 <div class="minits__settings-main">
                     <ul class="minits__settings-nav flex">
-                        <li><button class="minits__settings-nav-btn minits__settings--tab-active">
+                        <li>
+                            <button class="minits__settings-nav-btn minits__settings--tab-active"
+                                aria-label="General settings">
                                 <svg id="generalIcon" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -45,7 +52,8 @@
                                 </svg>
                             </button>
                         </li>
-                        <li><button class="minits__settings-nav-btn">
+                        <li>
+                            <button class="minits__settings-nav-btn" aria-label="Appearance settings">
                                 <svg id="appearanceIcon" width="20" height="20" viewBox="0 0 20 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -54,7 +62,8 @@
                                 </svg>
                             </button>
                         </li>
-                        <li><button class="minits__settings-nav-btn">
+                        <li>
+                            <button class="minits__settings-nav-btn" aria-label="Sound settings">
                                 <svg id="soundIcon" width="20" height="20" viewBox="0 0 21 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -67,7 +76,7 @@
                     </ul>
                 </div>
                 <div class="minits__settings-general minits__settings-controls-wrapper">
-                    <h4 class="minits__settings-type">General</h4>
+                    <p class="minits__settings-type">General</p>
                     <div class="minits__settings-controls">
                         <div class="child">
                             <div class="minits__settings-timer-section">
@@ -155,7 +164,7 @@
                     </div>
                 </div>
                 <div class="minits__settings-appearance minits__settings-controls-wrapper hide">
-                    <h4 class="minits__settings-type">Appearance</h4>
+                    <p class="minits__settings-type">Appearance</p>
                     <div class="minits__settings-controls">
                         <div class="child">
                             <div class="minits__settings-themes-section">
@@ -222,7 +231,7 @@
                     </div>
                 </div>
                 <div class="minits__settings-sound minits__settings-controls-wrapper hide">
-                    <h4 class="minits__settings-type">Sound</h4>
+                    <p class="minits__settings-type">Sound</p>
                     <div class="minits__settings-controls">
                         <div class="child">
                             <div class="minits__settings-alarm-section">
@@ -230,7 +239,7 @@
                                 <div class="minits__settings--center">
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label for="dropdown">Pick Sound</label>
-                                        <div class="dropdown" id="dropdown" name="dropdown" data-sound="alarmSound">
+                                        <div class="dropdown" name="dropdown" data-sound="alarmSound">
                                             <div class="select">
                                                 <audio class="" id="alarm">No audio</audio>
                                                 <span class="select__selected" data-selected-alarm="2">Digital</span>
@@ -276,7 +285,7 @@
                                 <div class="minits__settings--center">
                                     <div class="minits__settings-controls--wrapper flex">
                                         <label for="dropdown">Pick Track</label>
-                                        <div class="dropdown" id="dropdown" name="dropdown" data-sound="ambiSound">
+                                        <div class="dropdown" name="dropdown" data-sound="ambiSound">
                                             <div class="select">
                                                 <audio id="ambience" data-curr-status="paused" loop>No audio</audio>
                                                 <span class="select__selected" data-selected-ambi="1">Code Radio</span>
@@ -338,7 +347,7 @@
                 </div>
             </div>
             <div class="minits__controls flex">
-                <button class="minits__ambience" type="button" value="ambience">
+                <button class="minits__ambience" aria-label="pause/play ambient music" value="ambience">
                     <svg id="ambienceOffIcon" width="21" height="22" viewBox="0 0 21 22" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -352,7 +361,7 @@
                             fill="black" />
                     </svg>
                 </button>
-                <button class="minits__pause-play" type="button" value="pause/play">
+                <button class="minits__pause-play" aria-label="start/stop timer" value="start/stop">
                     <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -366,7 +375,7 @@
                             fill="black" />
                     </svg>
                 </button>
-                <button class="minits__reset" type="button" value="reset">
+                <button class="minits__reset" aria-label="reset timer" value="reset">
                     <svg id="resetIcon" width="20" height="21" viewBox="0 0 20 21" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path

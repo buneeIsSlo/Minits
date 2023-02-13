@@ -1,22 +1,22 @@
 @font-face {
   font-family: Quicksand;
   font-weight: 300;
-  font-display: optimal;
-  src: url("../assets/fonts/Quicksand-Regular.woff");
+  font-display: swap;
+  src: url("../assets/fonts/Quicksand-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: Quicksand;
   font-weight: 500;
-  font-display: optimal;
-  src: url("../assets/fonts/Quicksand-Medium.woff");
+  font-display: swap;
+  src: url("../assets/fonts/Quicksand-Medium.woff") format("woff");
 }
 
 @font-face {
   font-family: Quicksand;
   font-weight: 700;
-  font-display: optimal;
-  src: url("../assets/fonts/Quicksand-Bold.woff");
+  font-display: swap;
+  src: url("../assets/fonts/Quicksand-Bold.woff") format("woff");
 }
 
 /* ----- ================= ----- */
@@ -25,7 +25,7 @@
 
 :root {
   /* font-families */
-  --ff-quicksand: Quicksand, monospace;
+  --ff-quicksand: Quicksand, "Arial";
 
   /* font-sizes */
   --fs-1000: 7.4rem;
@@ -249,7 +249,7 @@ body[data-theme="dark"] {
   inset: 0;
   background-color: #ccc;
   outline: 2px solid var(--outline-toggle);
-  transition: background 0.3s;
+  transition: all 0.3s;
   cursor: pointer;
 }
 

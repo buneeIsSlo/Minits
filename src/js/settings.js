@@ -83,7 +83,7 @@ export default class Settings {
             "darkMode": false,
             "timerInTitle": true,
             "nowPlaying": true,
-            "color": 4,
+            "color": 0,
             "alarmSound": 1,
             "selctedAlarm": 2,
             "alarmVolAt": 50,

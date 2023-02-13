@@ -127,8 +127,10 @@ button {
 
 .minits__timer-inner {
   width: 95%;
+  max-width: 285px;
   margin: 0 auto;
   text-align: center;
+  overflow: hidden;
 }
 
 .pulse {
@@ -254,6 +256,11 @@ button {
   background-color: #f3f3f3;
 }
 
+.minits__settings-title {
+  font-size: var(--fs-700);
+  font-weight: 500;
+}
+
 .minits__settings-nav {
   list-style: none;
   padding: 0.2rem;
@@ -275,7 +282,7 @@ button {
   border-radius: 3px;
   background-color: transparent;
   cursor: pointer;
-  transition: background 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .minits__settings-nav-btn svg path {
@@ -299,6 +306,7 @@ button {
 }
 
 .minits__settings-type {
+  font-weight: 700;
   padding: 0.7em 0.5em;
   display: block;
   background-color: var(--bg-settings-type);
