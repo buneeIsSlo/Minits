@@ -64,6 +64,8 @@ button {
 
 .minits__logo {
   color: #fff;
+  text-shadow: 2px 2px 0px var(--shadow-timer), 4px 4px 0px var(--shadow-timer),
+    6px 6px 0px var(--shadow-timer);
 }
 
 .minits__settings {
@@ -127,7 +129,7 @@ button {
 
 .minits__timer-inner {
   width: 95%;
-  max-width: 285px;
+  max-width: 360px;
   margin: 0 auto;
   text-align: center;
   overflow: hidden;

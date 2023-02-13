@@ -12,12 +12,12 @@ const options = {
     background_color: "#404040",
     icons: [
         {
-            src: path.resolve("src/assets/images/logo192.png"),
+            src: path.resolve("src/assets/images/mLogo192.png"),
             sizes: "192x192",
             type: "image/png"
         },
         {
-            src: path.resolve("src/assets/images/logo512.png"),
+            src: path.resolve("src/assets/images/mLogo192.png"),
             sizes: "512x512",
             type: "image/png"
         }
