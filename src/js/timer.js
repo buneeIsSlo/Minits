@@ -157,10 +157,10 @@ export default class Timer {
     }
 
     showNotification() {
-        let img = "src/assest/images/close.svg";
+        let icon = "../assets/images/mLogo192.png";
         let text = "Move to the next timer.";
 
-        new Notification("Time up!", { body: text, image: img });
+        new Notification("Time up!", { body: text, icon: icon });
     }
 
     autoStartTimers() {
