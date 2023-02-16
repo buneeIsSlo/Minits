@@ -300,9 +300,7 @@ button {
 }
 
 .minits__settings-controls-wrapper {
-  height: 485px;
-  outline: 2px solid #404040;
-  outline: 2px solid var(--outline-settings-nav);
+  height: 4px;
   border-radius: 3px;
   animation: 0.3s fastScaleIn forwards cubic-bezier(0, 0.93, 0.51, 0.98);
 }
@@ -316,6 +314,7 @@ button {
   color: var(--c-settings-type-text);
   position: relative;
   margin: 0;
+  border-radius: 3px;
 }
 
 .minits__settings-type:before {
@@ -329,7 +328,7 @@ button {
 }
 
 .minits__settings-controls {
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   height: 90%;
   max-height: 420px;
 }
@@ -345,9 +344,11 @@ button {
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
-  margin: 0.2rem 0;
+  margin-block: 0.2em;
   padding: 0.4rem;
   background-color: var(--bg-section-title);
+  position: relative;
+  border-radius: 3px;
 }
 
 .section--info {

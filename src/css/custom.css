@@ -80,7 +80,7 @@ body[data-theme="light"] {
 
   --c-settings-popup-text: #404040;
   --c-settings-popup-label: black;
-  --c-section-title-text: #5e5e5e;
+  --c-section-title-text: black;
   --c-settings-type-text: #fff;
 
   --outline-settings-btn: hsla(0, 0%, 0%, 0.3);
@@ -136,20 +136,20 @@ body[data-theme="dark"] {
   --bg-dropdown-menu: #404040;
   --bg-dropdown-menu-option: #5e5e5e;
 
-  --c-settings-popup-text: #fff;
-  --c-settings-popup-label: #fff;
-  --c-section-title-text: #eee;
+  --c-settings-popup-text: #eee;
+  --c-settings-popup-label: #eee;
+  --c-section-title-text: #fff;
   --c-settings-type-text: #404040;
 
   --outline-settings-btn: hsla(var(--app-accent), 0.8);
-  --outline-settings-nav: #fff;
-  --outline-settings-wrapper: #fff;
+  --outline-settings-nav: #eee;
+  --outline-settings-wrapper: #eee;
   --outline-color-palette-checked: #eee;
-  --outline-input: #fff;
-  --outline-toggle: #fff;
-  --outline-toggle-circle: #fff;
-  --outline-dropdown-select: #fff;
-  --outline-dropdown-menu: #fff;
+  --outline-input: #eee;
+  --outline-toggle: #eee;
+  --outline-toggle-circle: #eee;
+  --outline-dropdown-select: #eee;
+  --outline-dropdown-menu: #eee;
 
   --svg-settings-btn: #fff;
   --svg-settings-close: #fff;
