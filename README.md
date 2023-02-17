@@ -4,6 +4,8 @@
 
 A fun and easy-to-use Pomodoro timer to make work enjoyable.
 
+![desktop screenshot](./public/desktopScreenshot.png)
+
 </div>
 
 ## ✨ Features

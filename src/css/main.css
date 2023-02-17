@@ -510,6 +510,7 @@ input:checked + .slider:before {
 .made-with {
   position: fixed;
   bottom: 0;
+  font-weight: 300;
 }
 
 @keyframes translateIn {
