@@ -1,4 +1,4 @@
-import { setTime, timerEdits, pulseTimer } from "./common";
+import { setTime, timerEdits, pulseTimer } from "./utils";
 import { playAlarm } from "./audio";
 
 export default class Timer {

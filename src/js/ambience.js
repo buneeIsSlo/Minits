@@ -1,4 +1,4 @@
-import { insertNowPlaying, removeNowPlaying } from "./common";
+import { insertNowPlaying, removeNowPlaying } from "./utils";
 
 export default class Ambience {
     constructor() {
