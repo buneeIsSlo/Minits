@@ -507,10 +507,16 @@ input:checked + .slider:before {
   fill: #fff;
 }
 
-.made-with {
+.how-to {
   position: fixed;
-  bottom: 0;
+  bottom: 1em;
+  right: 1em;
   font-weight: 300;
+  color: var(--c-settings-popup-text);
+}
+
+.how-to:hover {
+  color: var(--accent);
 }
 
 @keyframes translateIn {
