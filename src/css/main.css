@@ -396,10 +396,10 @@ input[type="number"]:disabled {
 }
 
 .stop-timer-info {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  right: -20%;
-  transform: translate(50%, -50%);
+  right: -20%; */
+  transform: translateX(-450%);
   width: 1em;
   height: 1em;
   background-color: transparent;
