@@ -21,6 +21,15 @@ A fun and easy-to-use Pomodoro timer to make work enjoyable.
 - Install the app with a single click as a [progressive web app](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
 - Fully responsive design for optimal display on most devices.
 
+## 🧰 Tech used
+
+- HTML
+- CSS
+- JavaScript
+- Webpack
+- Figma
+- Audacity
+
 ## 💻 Setup Locally
 
 Clone the project
