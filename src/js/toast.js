@@ -12,7 +12,6 @@ export default class Toast {
     }
 
     setUpEvents() {
-        console.log("toast");
         this.createToastWrapper();
         this.toastWrapper.addEventListener("click", () => this.clear());
     }
@@ -40,8 +39,6 @@ export default class Toast {
     }
 
     anim(element) {
-        console.log(element);
-
         let toastIn = addAnimation(element, animationToastIn, {
             duration: 500,
             fill: "forwards"
@@ -59,7 +56,6 @@ export default class Toast {
                 element.remove();
             };
 
-            console.log(toastOut);
         }, 2000);
 
     }

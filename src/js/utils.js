@@ -66,7 +66,6 @@ export const playCodeRadio = async (audio) => {
     const response = await fetch(API_URL, { cache: "no-cache" });
     const json = await response.json();
 
-    console.log(json);
     const LISTEN_URL = json.station.listen_url;
 
     audio.src = LISTEN_URL;

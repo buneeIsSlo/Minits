@@ -154,7 +154,6 @@ export default class Settings {
             const menuSoundName = dropdown.querySelectorAll(".menu__sound-name");
 
             const selectedIndex = this.storedData[dropdown.dataset.sound];
-            console.log(selectedIndex);
 
             options[selectedIndex].classList.add(this.menuActiveOptionClass);
             selectedOption.innerText = menuSoundName[selectedIndex].innerText;
@@ -369,7 +368,6 @@ export default class Settings {
     }
 
     enableNotifications() {
-        console.log("noti!!");
         this.askNotificationPermission();
     }
 
@@ -382,12 +380,10 @@ export default class Settings {
     }
 
     enableTimerInTitle() {
-        console.log("timeytime");
     }
 
     enableNowPlaying() {
         if (this.ambiAudio.dataset.currStatus === "playing") {
-            console.log("isshyoo");
             insertNowPlaying();
         }
     }
