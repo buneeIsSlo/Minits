@@ -130,7 +130,7 @@ export default class Timer {
         const endTime = now + (time * 1000);
 
         const countdown = setInterval(() => {
-            if (this.minitsTime.dataset.secondsLeft == 55) {
+            if (this.minitsTime.dataset.secondsLeft == 0) {
                 clearInterval(countdown);
                 playAlarm();
                 this.resetTime();
