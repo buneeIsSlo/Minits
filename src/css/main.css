@@ -165,6 +165,7 @@ button {
   border-radius: 100px;
   background-color: var(--bg-secondary-controls);
   box-shadow: 0px 3px 0px var(--shadow-controls);
+  cursor: pointer;
 }
 
 #resetIcon,

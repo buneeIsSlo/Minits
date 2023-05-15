@@ -331,6 +331,7 @@ body[data-theme="dark"] {
   justify-content: space-between;
   background-color: transparent;
   position: relative;
+  cursor: pointer;
 }
 
 .menu__sound-preview {
@@ -364,6 +365,7 @@ body[data-theme="dark"] {
 .menu__option--active:hover {
   background-color: var(--accent);
   color: #fff;
+  cursor: initial;
 }
 
 .menu__option--active:hover .menu__sound-preview {
