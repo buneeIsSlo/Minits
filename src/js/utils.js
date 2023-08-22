@@ -60,21 +60,28 @@ export const pulseTimer = () => {
 };
 
 export const playCodeRadio = async (audio) => {
+    const API_URL = "https://coderadio-admin-v2.freecodecamp.org/api/nowplaying_static/coderadio.json";
 
-    const API_URL = "https://coderadio-admin.freecodecamp.org/api/live/nowplaying/coderadio";
+    try {
+        const response = await fetch(API_URL, { cache: "no-cache" });
 
-    const response = await fetch(API_URL, { cache: "no-cache" });
-    const json = await response.json();
+        if (response.ok) {
+            const json = await response.json();
+            const LISTEN_URL = json.station.listen_url;
 
-    const LISTEN_URL = json.station.listen_url;
+            audio.src = LISTEN_URL;
 
-    audio.src = LISTEN_URL;
-    if (audio.dataset.currStatus === "playing") {
-        audio.play();
-        insertNowPlaying();
+            if (audio.dataset.currStatus === "playing") {
+                audio.play();
+                insertNowPlaying();
+            }
+        } else {
+            console.error("Failed to fetch API data:", response.status, response.statusText);
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
     }
 };
-
 
 const timerContainer = document.querySelector(".minits__timer-container");
 const nowPlayingtoggle = document.getElementById("nowPlaying");
